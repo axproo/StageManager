@@ -33,7 +33,7 @@ git clone <URL_DU_DEPOT>
 Exemple :
 
 ```bash
-git clone https://github.com/organisation/projet.git
+git clone https://github.com/axproo/StageManager.git
 ```
 
 ---
