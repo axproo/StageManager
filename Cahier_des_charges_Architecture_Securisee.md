@@ -36,11 +36,11 @@ Afin de garantir la disponibilité, la confidentialité et l'intégrité des don
 
 - Garantir la sauvegarde et la restauration des données. 
 
-## **4. Segmentation réseau** 
+## **3. Segmentation réseau** 
 
 Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'isoler chaque fonction de l'infrastructure. Cette segmentation limite la propagation d'un incident : si une machine est compromise, l'attaquant ne peut pas accéder librement aux autres zones. Le pfSense joue le rôle de routeur inter-VLAN et applique une politique stricte : tout est bloqué par défaut, seuls les flux listés cidessous sont autorisés. 
 
-### **4.1 Zones (VLAN)** 
+### **3.1 Zones (VLAN)** 
 
 |**VLAN**|**Zone**|**Plage réseau**|**Contenu**|
 |---|---|---|---|
@@ -52,7 +52,7 @@ Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'is
 
 
 
-### **4.2 Principes de segmentation** 
+### **3.2 Principes de segmentation** 
 
 - La base de données (VLAN 30) n'est jamais exposée directement à Internet et n'accepte des connexions que depuis le VLAN applicatif (VLAN 20). 
 
@@ -64,9 +64,7 @@ Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'is
 
 - Aucune communication inter-VLAN n'est autorisée si elle n'est pas explicitement définie dans les règles du pare-feu pfSense. 
 
-### **4.3 Matrice des flux autorisés** 
-
-Page 4 
+### **3.3 Matrice des flux autorisés** 
 
 Cahier des charges - Infrastructure sécurisée 
 
@@ -82,12 +80,9 @@ Cahier des charges - Infrastructure sécurisée
 |VLAN 20 → VLAN 30<br>(autres VM)|Tous ports|Non|Aucune communication<br>non listée entre VLAN|
 
 
-
-Page 5 
-
 Cahier des charges - Infrastructure sécurisée 
 
-## **5. Description des composants** 
+## **4. Description des composants** 
 
 |**Composant**|**Rôle**|**Technologie**|**Sécurité associée**|
 |---|---|---|---|
@@ -100,11 +95,7 @@ Cahier des charges - Infrastructure sécurisée
 
 
 
-Page 6 
-
-Cahier des charges - Infrastructure sécurisée 
-
-## **6. Sécurité de l'architecture** 
+## **5. Sécurité de l'architecture** 
 
 ### **5.1 pfSense (pare-feu)** 
 
@@ -130,7 +121,7 @@ Protection de l'application contre les attaques courantes : injection SQL, Cross
 
 - Journalisation centralisée des événements. 
 
-## **7. Gestion des accès utilisateurs** 
+## **6. Gestion des accès utilisateurs** 
 
 - Administrateur : gestion complète du système. 
 
@@ -140,7 +131,7 @@ Protection de l'application contre les attaques courantes : injection SQL, Cross
 
 - Stagiaire : consultation de ses propres informations. 
 
-## **8. Sauvegarde et restauration** 
+## **7. Sauvegarde et restauration** 
 
 ### **7.1 Sauvegarde quotidienne** 
 
@@ -154,15 +145,8 @@ Protection de l'application contre les attaques courantes : injection SQL, Cross
 
 Objectif : garantir la continuité du service en cas de panne matérielle, d'erreur humaine ou d'incident de sécurité. 
 
-Page 7 
 
-Cahier des charges - Infrastructure sécurisée 
-
-Page 8 
-
-Cahier des charges - Infrastructure sécurisée 
-
-## **9. Nos engagements sécurité envers le client** 
+## **8. Nos engagements sécurité envers le client** 
 
 - Hébergement sécurisé sur infrastructure dédiée. 
 
@@ -180,7 +164,7 @@ Cahier des charges - Infrastructure sécurisée
 
 - Gestion fine des droits utilisateurs selon les rôles. 
 
-## **10. Évolutions futures possibles** 
+## **9. Évolutions futures possibles** 
 
 - Cluster Proxmox et haute disponibilité. 
 
@@ -194,5 +178,4 @@ Cahier des charges - Infrastructure sécurisée
 
 - Plan de reprise d'activité (Disaster Recovery). 
 
-Page 9 
 
