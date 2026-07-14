@@ -4,8 +4,6 @@
 
 Application Web de gestion des stagiaires 
 
-Version 1.0 Juillet 2026 
-
 Cahier des charges - Infrastructure sécurisée 
 
 ## **1. Introduction et contexte** 
@@ -40,19 +38,8 @@ Afin de garantir la disponibilité, la confidentialité et l'intégrité des don
 
 Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'isoler chaque fonction de l'infrastructure. Cette segmentation limite la propagation d'un incident : si une machine est compromise, l'attaquant ne peut pas accéder librement aux autres zones. Le pfSense joue le rôle de routeur inter-VLAN et applique une politique stricte : tout est bloqué par défaut, seuls les flux listés cidessous sont autorisés. 
 
-### **3.1 Zones (VLAN)** 
 
-|**VLAN**|**Zone**|**Plage réseau**|**Contenu**|
-|---|---|---|---|
-|VLAN 10|DMZ|172.16.10.0/24|Nginx Reverse Proxy + WAF (seule<br>zone exposée depuis Internet)|
-|VLAN 20|Applicatif Web|172.16.20.0/24|VM Debian Web (application<br>stagiaires)|
-|VLAN 30|Données|172.16.30.0/24|VM Base de données (MariaDB /<br>PostgreSQL)|
-|VLAN 40|Administration|172.16.40.0/24|VM Management, accessible<br>uniquement via VPN|
-|VLAN 50|Supervision|172.16.50.0/24|VM Surveillance (Wazuh, Grafana,<br>Prometheus)|
-
-
-
-### **3.2 Principes de segmentation** 
+### **3.1 Principes de segmentation** 
 
 - La base de données (VLAN 30) n'est jamais exposée directement à Internet et n'accepte des connexions que depuis le VLAN applicatif (VLAN 20). 
 
@@ -64,7 +51,7 @@ Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'is
 
 - Aucune communication inter-VLAN n'est autorisée si elle n'est pas explicitement définie dans les règles du pare-feu pfSense. 
 
-### **3.3 Matrice des flux autorisés** 
+### **3.2 Matrice des flux autorisés** 
 
 Cahier des charges - Infrastructure sécurisée 
 
