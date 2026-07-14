@@ -36,15 +36,6 @@ Afin de garantir la disponibilité, la confidentialité et l'intégrité des don
 
 - Garantir la sauvegarde et la restauration des données. 
 
-Page 2 
-
-
-
-<!-- Start of picture text -->
-Architecture: d'hébergement‘ sécurisé. - Vue simplifiée. =g:<br>(rem<br>HTTPS 443<br>pfSense<br>Firewall / VPN / IDS-IPS<br>Nginx Reverse Proxy + WAF LAN 10 - DMZ 172.16.10.0/24<br>SSL/ ModSecurity / OWASP CRS<br>i'earnServeureeePhysiqueeee eee- Proxmoxeee eee eensVE_P/TANSs isolésSe par pfSen eenseseH<br>1‘ 1<br>‘ 1<br>} VM Debian - Web VM Database VM Debian - Management 11<br>'' VLAN 20 - 172.16.20.0/24 VLAN 30 - 172.16.30.0/24 VLAN 40 - 172.16.40.0/24 H<br>1t Nginx local + Docker MariaDB / PostgreSQL Administration SSH H<br>‘ ApplicationAccés SSH Webrestreint Stagiaires AccessibleAucun uniquementaccés direct duinternet VLAN 20 SauvegardesAccés via VPN/ Automatisation + clé SSH 1H<br>'' Sauvegarde quotidienne Isolé du reste du LAN }<br>;! 1<br>' ' ' ' 1<br>' H ' ' 1<br>‘} VM Debian - Surveillance 111<br>i! VLAN 50 - 172.16.50.0/24 (lecture seule sur les autres VLAN) H<br>1! Wazubh (détection intrusions et logs) H<br>'' Grafana + Prometheus (supervision CPU / RAM / réseau / disponibilité) H<br>1' Alertes de sécurité en temps réel ;<br>1<br>HWHW‘111<br>i Traits pleins = flux autorisés | Traits pointillés = supervision/logs | Chaque VLAN isolé par pfSense, seuls les flux listés sont ouverts '<br>Nw www ww www www www wwe we wwe wwe meee www ewe meee eee eee eee eee eee eee enn’?'<br><!-- End of picture text -->
-
-Cahier des charges - Infrastructure sécurisée 
-
 ## **4. Segmentation réseau** 
 
 Le réseau interne est découpé en plusieurs VLAN (réseaux virtuels) afin d'isoler chaque fonction de l'infrastructure. Cette segmentation limite la propagation d'un incident : si une machine est compromise, l'attaquant ne peut pas accéder librement aux autres zones. Le pfSense joue le rôle de routeur inter-VLAN et applique une politique stricte : tout est bloqué par défaut, seuls les flux listés cidessous sont autorisés. 
