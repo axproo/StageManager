@@ -75,9 +75,6 @@ Le RPO (Recovery Point Objective) définit la perte de données maximale tolér�
 |Infrastructure complète<br>(Proxmox)|7 jours|8 à 24 h|Sauvegarde hebdomadaire<br>complète des VM|
 
 
-<!-- Start of picture text -->
-Architecture. d'hébergement‘ sécurisé. - 4 VM<br>(ems<br>HTTPS 443<br>pfSense<br>Firewall / VPN / IDS-IPS (Suricata)/ DNS / NTP<br>PO SY<br>|' Serveur Physique - Proxmox VE (4 cop 111,47 Go RAM! ~1 To) H<br>1 1<br>f1<br>}VM Application 1<br>' VLAN 20 - Debian 12 - 2 vCPU/ 3 Go RAM H<br>‘ VM Base de données 1'<br>‘ Conteneur Front Conteneur Back VLAN 30 - Debian 12 - 1 vCPU/ 2 Go ;<br>‘ Nginx Reverse Proxy API application MariaDB / PostgreSQL ;<br>1 + WAF (ModSecurity) —éshau Dockey interne Stagiaires Aucun accés direct Internet H<br>} Interface utilisateurs Logique métier Sauvegarde quotidienne 1<br>' SSL / OWASP CRS Jamais exposé Accessible uniquement du VLAN 20 ;<br>Exposé (VLAN 20) directement !<br>''‘' }<br>i‘1 ' 11<br>1 ' 1<br>' H 4 1<br>''‘4 VM Monitoring '.': !'''<br>VLAN 40 - Debian 12 - 1 vCPU/ 1,5 Go- lecture seule sur les autres VLAN ; '<br>} Wazuh (détection intrusions et logs) 'ae '1<br>} Grafana + Prometheus (supervision CPU / RAM / réseau / disponibilité) 1<br>1' Alertes de sécurité en temps réel ,<br>1Mo ee ee ee eee eee ee eee eee eee eee!1<br>Traits pleins = flux applicatifs autorisés | Traits pointillés = supervision/logs | 4 VLAN isolés par pfSense<br><!-- End of picture text -->
-
 Cahier des charges - Infrastructure sécurisée 
 
 **6. Infrastructure physique et virtuelle** 
@@ -109,8 +106,6 @@ _Point d'attention : avec seulement ≈ 2 Go de RAM libres actuellement (82 % d�
 
 
 Dimensionnement total : ≈ 5 vCPU (léger sur-provisionnement, usuel en virtualisation) et ≈ 7,5 Go de RAM pour les 4 VM. Ces caractéristiques constituent un dimensionnement optimisé pour le matériel existant ; elles pourront être révisées après validation des volumes réels avec le client (voir section 3). 
-
-Page 5 
 
 Cahier des charges - Infrastructure sécurisée 
 
@@ -146,9 +141,6 @@ Le réseau interne est découpé en 4 VLAN afin d'isoler chaque fonction de l'in
 |VLAN 10 → VLAN 20<br>(conteneur Front)|TCP 80/443|Oui|Reverse proxy vers le<br>conteneur Front|
 
 
-
-Cahier des charges - Infrastructure sécurisée 
-
 |**Source → Destination**|**Port / Protocole**|**Autorisé**|**Remarque**|
 |---|---|---|---|
 |Conteneur Front →<br>Conteneur Back (VLAN 20)|Port interne Docker|Oui|Réseau Docker interne,<br>jamais exposé|
@@ -161,12 +153,6 @@ Cahier des charges - Infrastructure sécurisée
 |Tous VLAN → pfSense|UDP 123 (NTP)|Oui|Synchronisation horaire<br>centralisée|
 |pfSense → Internet|UDP/TCP 53, UDP 123|Oui|Résolution DNS externe et<br>synchronisation NTP<br>publique|
 
-
-
-Page 7 
-
-Cahier des charges - Infrastructure sécurisée 
-
 ### **8. Description des composants** 
 
 |**Composant**|**Rôle**|**Technologie**|**Sécurité associée**|
@@ -176,12 +162,6 @@ Cahier des charges - Infrastructure sécurisée
 |Conteneur Back (VM<br>Application)|Logique métier de<br>l'application stagiaires|API applicative, Docker|Jamais exposé directement,<br>accessible uniquement depuis le<br>conteneur Front|
 |VM Base de données|Stockage des données<br>stagiaires|MariaDB / PostgreSQL|Aucun accès direct Internet,<br>sauvegarde quotidienne|
 |VM Monitoring|Supervision et détection<br>d'intrusions|Wazuh, Grafana,<br>Prometheus|Alertes temps réel, journalisation<br>centralisée, accès lecture seule|
-
-
-
-Page 8 
-
-Cahier des charges - Infrastructure sécurisée 
 
 ### **9. Sécurité de l'architecture** 
 
@@ -227,25 +207,63 @@ Suricata est retenu plutôt que Snort pour cette architecture, principalement po
 
 - Corrélation avec les alertes Suricata et les logs pfSense pour une vue de sécurité centralisée. 
 
-Page 9 
-
-Cahier des charges - Infrastructure sécurisée 
-
 - Classification des alertes par niveau de criticité et remontée à l'équipe d'astreinte. 
 
 #### **9.6 Politique SSH** 
 
-- Authentification par clé uniquement ; l'authentification par mot de passe est désactivée. 
+9.6 Politique SSH 
+Cette politique de durcissement s'applique à toutes les VM administrables en SSH (VM Application, VM 
+Base de données, VM Monitoring) ainsi qu'au pfSense. 
+9.6.1 Authentification 
+- Authentification par clé SSH uniquement ; l'authentification par mot de passe est désactivée 
+(PasswordAuthentication no). 
+- Connexion directe du compte root interdite (PermitRootLogin no) ; connexion nominative puis 
+élévation de privilèges via sudo. 
+- Clés modernes uniquement : Ed25519 (ou RSA 4096 bits minimum) ; les clés DSA et RSA 
+inférieures à 2048 bits sont interdites. 
+- Authentification multi-facteurs (TOTP via PAM) exigée en complément de la clé pour les 
+comptes administrateurs les plus sensibles. 
+9.6.2 Accès réseau 
+- SSH jamais exposé directement à Internet : accessible uniquement via le VPN, conformément à 
+la segmentation réseau (section 7). 
+- Restriction par IP source (AllowUsers ou pare-feu local nftables) en complément du filtrage 
+pfSense, en défense en profondeur. 
+- Changement du port SSH par défaut (22) vers un port non standard, pour réduire le bruit des 
+scans automatisés (mesure secondaire, non suffisante seule). 
+9.6.3 Limitation des tentatives 
 
-- Connexion directe du compte root interdite (connexion nominative puis élévation de privilèges). 
-
-- Accès SSH restreint aux VLAN applicatif, données et supervision, uniquement via VPN (pas d'accès SSH direct depuis Internet). 
-
-- Fail2ban : bannissement automatique après 3 tentatives échouées. 
-
+- Fail2ban : bannissement automatique après 3 tentatives échouées, avec durée de bannissement 
+progressive en cas de récidive. 
+- MaxAuthTries fixé à 3 tentatives par connexion. 
+- LoginGraceTime réduit à 30 secondes avant expiration d'une connexion non authentifiée. 
+9.6.4 Session et durcissement du démon SSH
+ 
+- Déconnexion automatique après inactivité (ClientAliveInterval / ClientAliveCountMax, environ 
+10 minutes). 
+- Désactivation des redirections inutiles : X11Forwarding, AllowTcpForwarding, 
+AllowAgentForwarding désactivés sauf besoin explicite. 
+- Limitation du nombre de connexions/sessions simultanées (MaxSessions, MaxStartups) contre 
+les tentatives de bruteforce ou de déni de service. 
 - Bannière légale d'avertissement affichée avant authentification. 
+9.6.5 Traçabilité
+ 
+Cahier des charges - Infrastructure sécurisée 
+- Journalisation complète des connexions, déconnexions et commandes exécutées via sudo. 
+- Logs SSH remontés vers la VM Monitoring (Wazuh) pour corrélation et alerte en cas de tentative 
+suspecte, d'horaire ou d'IP inhabituels. 
+- Conservation des logs conformément à la politique définie en section 12 (Journalisation et 
+RGPD). 
+9.6.6 Gestion des clés 
 
-- Déconnexion automatique après une période d'inactivité. 
+- Une clé SSH strictement individuelle par administrateur, jamais de clé partagée entre plusieurs 
+personnes. 
+- Révocation immédiate d'une clé lors du départ d'un administrateur, alignée sur la politique de 
+gestion des comptes (section 11.2). 
+- Passphrase obligatoire sur toute clé privée stockée côté poste client. 
+9.7 Protection système générale 
+- Mises à jour régulières des systèmes et services. 
+- Suppression des services inutiles. 
+- Gestion stricte des permissions et journalisation centralisée des événements.
 
 #### **9.7 Protection système générale** 
 
@@ -255,8 +273,6 @@ Cahier des charges - Infrastructure sécurisée
 
 - Gestion stricte des permissions et journalisation centralisée des événements. 
 
-
-Cahier des charges - Infrastructure sécurisée 
 
 ### **10. Conteneurisation (Docker)** 
 
@@ -283,9 +299,6 @@ L'application Web est packagée et exécutée via Docker sur la VM Application, 
 - Analyse de vulnérabilités des images avant déploiement (ex. Trivy). 
 
 - Conteneurs exécutés avec un utilisateur non-root et des volumes en lecture seule lorsque possible. 
-
-
-Cahier des charges - Infrastructure sécurisée 
 
 ### **11. Gestion des comptes et des accès** 
 
@@ -335,14 +348,9 @@ Cahier des charges - Infrastructure sécurisée
 
 - Chiffrement des données sensibles au repos et en transit (HTTPS, chiffrement base de données si nécessaire). 
 
-
-Cahier des charges - Infrastructure sécurisée 
-
 - Le client, en tant que responsable de traitement, tient le registre des traitements ; le prestataire agit en tant que sous-traitant pour les aspects techniques et de sécurité. 
 
 - En cas de violation de données, notification à la CNIL sous 72 h à l'initiative du client, avec l'appui technique du prestataire pour qualifier l'incident. 
-
-Cahier des charges - Infrastructure sécurisée 
 
 ### **13. Sauvegarde et restauration** 
 
@@ -372,9 +380,6 @@ Objectif : garantir la continuité du service en cas de panne matérielle, d'err
 |Sécurité technique des données (chiffrement, accès)|Informé|Responsable (sous-<br>traitant)|
 |Notification en cas d'incident de sécurité (CNIL)|Décideur final|Alerte et appui technique|
 
-
-
-Cahier des charges - Infrastructure sécurisée 
 
 ### **15. Nos engagements sécurité envers le client** 
 
