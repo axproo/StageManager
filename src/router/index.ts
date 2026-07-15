@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Login from "@/views/Login.vue";
-import Dashboard from "@/views/Dashboard.vue";
-import NotFound from "@/views/NotFound.vue";
+import Login from "@/pages/Login.vue";
+import Dashboard from "@/pages/Dashboard.vue";
+import NotFound from "@/pages/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(),
