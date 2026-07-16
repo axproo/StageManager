@@ -7,10 +7,10 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src/"),
-      "@router": path.resolve(__dirname, "src/router/"),
-      "@stores": path.resolve(__dirname, "src/stores/"),
-      "@views": path.resolve(__dirname, "src/views/"),
+      "@": path.resolve(__dirname, "src"),
+      "@router": path.resolve(__dirname, "src/router"),
+      "@stores": path.resolve(__dirname, "src/stores"),
+      "@pages": path.resolve(__dirname, "src/pages"),
     },
   },
   plugins: [vue(), tailwindcss()],

@@ -5,7 +5,7 @@ const store = useAppStore();
 </script>
 <template>
   <div class="dashboard">
-    <h1>Dashboard</h1>
+    <h1 class="text-3xl font-bold underline">Dashboard</h1>
     <p>Welcome {{ store.username }}</p>
   </div>
 </template>

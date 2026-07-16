@@ -7,7 +7,7 @@ export const useAppStore = defineStore("app", {
   }),
 
   actions: {
-    login(username) {
+    login(username: string) {
       this.isLoggedIn = true;
       this.username = username;
     },
