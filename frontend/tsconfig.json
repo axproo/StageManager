@@ -1,5 +1,12 @@
 {
   "files": [],
+  "baseUrl": "../",
+  "paths": {
+    "@/*": ["src/*"],
+    "@router/*": ["src/router/*"],
+    "@stores/*": ["src/stores/*"],
+    "@views/*": ["src/views/*"]
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

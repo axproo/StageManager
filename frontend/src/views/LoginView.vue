@@ -1,12 +1,12 @@
 <script setup>
-import { useAppStore } from '../stores/user.store'
-import { useRouter } from 'vue-router'
+import { useAppStore } from "@stores/user.store";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
-const store = useAppStore()
+const router = useRouter();
+const store = useAppStore();
 function handleLogin() {
-  store.login('John')      // Update the store
-  router.push('/dashboard') // Redirect to dashboard
+  store.login("John"); // Update the store
+  router.push("/dashboard"); // Redirect to dashboard
 }
 </script>
 
@@ -20,8 +20,8 @@ function handleLogin() {
 <style scoped>
 button {
   padding: 8px 16px;
-  color:white;
-  background-color:blue;
-  cursor:pointer
+  color: white;
+  background-color: blue;
+  cursor: pointer;
 }
 </style>
