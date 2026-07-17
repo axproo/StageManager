@@ -34,7 +34,6 @@ Afin de garantir la disponibilité, la confidentialité et l'intégrité des don
 
 - Garantir la sauvegarde et la restauration des données. 
 
-Page 2 
 
 Cahier des charges - Infrastructure sécurisée 
 
@@ -59,7 +58,6 @@ Ces chiffres sont des estimations de dimensionnement ; ils seront affinés avec 
 |Base de données (dossiers,<br>conventions)|≈ 2 à 5 Go|+15 % / an|
 |Documents administratifs (PDF, scans)|≈ 5 à 10 Go|+20 % / an|
 |Logs (sécurité, applicatifs,<br>supervision)|≈ 3 Go / mois|Stable, purge selon politique de<br>rétention|
-
 
 
 Le stockage est dimensionné avec une marge, et les disques virtuels Proxmox peuvent être étendus à chaud sans interruption de service. 
