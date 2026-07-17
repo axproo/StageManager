@@ -1,9 +1,12 @@
 <script setup>
 import { useAppStore } from "@stores/user.store";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
 const store = useAppStore();
+const { locale } = useI18n();
+
 function handleLogin() {
   store.login("John"); // Update the store
   router.push("/dashboard"); // Redirect to dashboard
@@ -26,7 +29,7 @@ function handleLogin() {
         <h2
           class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white"
         >
-          Sign in to your account
+          {{ $t("login") }}
         </h2>
       </div>
 
@@ -37,7 +40,7 @@ function handleLogin() {
               for="email"
               class="block text-sm/6 font-medium text-gray-100"
             >
-              Email address
+              {{ $t("email") }}
             </label>
 
             <div class="mt-2">
@@ -58,7 +61,7 @@ function handleLogin() {
                 for="password"
                 class="block text-sm/6 font-medium text-gray-100"
               >
-                Password
+                {{ $t("password") }}
               </label>
             </div>
 
@@ -76,7 +79,7 @@ function handleLogin() {
               href="#"
               class="text-sm font-semibold text-indigo-400 hover:text-indigo-300"
             >
-              Forgot password?
+              {{ $t("forgotPassword") }}
             </a>
           </div>
 
@@ -85,13 +88,13 @@ function handleLogin() {
               type="submit"
               class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
-              Sign in
+              {{ $t("signIn") }}
             </button>
           </div>
           <div
             class="py-3 flex items-center text-sm text-white before:flex-1 before:border-t before:border-stone-200 before:me-6 after:flex-1 after:border-t after:border-stone-200 after:ms-6 dark:text-neutral-200 dark:before:border-neutral-600 dark:after:border-neutral-600"
           >
-            Or
+            {{ $t("or") }}
           </div>
           <button
             type="button"
@@ -134,17 +137,17 @@ function handleLogin() {
                 </clipPath>
               </defs>
             </svg>
-            Sign in with Google
+            {{ $t("signInWithGoogle") }}
           </button>
         </form>
 
         <p class="mt-10 text-center text-sm text-gray-400">
-          Not a member?
+          {{ $t("notMember") }}
           <a
             href="#"
             class="font-semibold text-indigo-400 hover:text-indigo-300"
           >
-            Create your account
+            {{ $t("createAccount") }}
           </a>
         </p>
       </div>

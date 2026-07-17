@@ -1,0 +1,11 @@
+{
+  "login": "Sign in to your account",
+  "email": "Email address",
+  "password": "Password",
+  "forgotPassword": "Forgot password?",
+  "signIn": "Sign in",
+  "signInWithGoogle": "Sign in with Google",
+  "or": "Or",
+  "notMember": "Not a member?",
+  "createAccount": "Create your account"
+}
