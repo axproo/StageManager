@@ -2,12 +2,14 @@ import js from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
 import globals from "globals";
 import unusedImports from "eslint-plugin-unused-imports";
+import tseslint from "typescript-eslint";
 
 export default [
   {
-    ignores: ["dist", "node_modules", "vite.config.ts"],
+    ignores: ["dist", "node_modules", "vite.config.ts", "**/*.d.ts"],
   },
   js.configs.recommended,
+  ...tseslint.configs.recommended,
 
   ...pluginVue.configs["flat/recommended"],
 
