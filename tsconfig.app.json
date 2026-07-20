@@ -9,7 +9,6 @@
     "src/**/__tests__/*"
   ],
   "compilerOptions": {
-    "baseUrl": ".",
 
     "paths": {
       "@/*": [
