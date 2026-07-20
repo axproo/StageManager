@@ -96,10 +96,10 @@ _Point d'attention : avec seulement ≈ 2 Go de RAM libres actuellement (82 % d�
 
 |**VM**|**vCPU**|**RAM**|**Disque**|**Système**|**Rôle**|
 |---|---|---|---|---|---|
-|pfSense|1|1 Go|8 Go|pfSense CE 2.7.x|Pare-feu / VPN /<br>IDS-IPS / DNS /<br>NTP|
-|VM Application|2|3 Go|50 Go|Debian 12<br>(Bookworm)|Conteneurs Front<br>(Nginx+WAF) et<br>Back (API)|
-|VM Base de<br>données|1|2 Go|40 Go|Debian 12<br>(Bookworm)|MariaDB /<br>PostgreSQL|
-|VM Monitoring|1|1,5 Go|60 Go|Debian 12<br>(Bookworm)|Wazuh, Grafana,<br>Prometheus|
+|pfSense|1|2 Go|100 Go|pfSense CE 2.7.x|Pare-feu / VPN /<br>IDS-IPS / DNS /<br>NTP|
+|VM Application|2|3 Go|200 Go|Debian 12<br>(Bookworm)|Conteneurs Front<br>(Nginx+WAF) et<br>Back (API)|
+|VM Base de<br>données|1|1 Go|50 Go|Debian 12<br>(Bookworm)|MariaDB /<br>PostgreSQL|
+|VM Monitoring|1|1 Go|100 Go|Debian 12<br>(Bookworm)|Wazuh, Grafana,<br>Prometheus|
 
 
 
