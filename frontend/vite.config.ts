@@ -13,5 +13,10 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "src/pages"),
     },
   },
+  server: {
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
+    },
+  },
   plugins: [vue(), tailwindcss()],
 });

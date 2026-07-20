@@ -4,21 +4,74 @@ import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { googleTokenLogin } from "vue3-google-login";
 import { ref } from "vue";
+import { userMocks } from "../mocks/userMock";
+import { toast } from "vue3-toastify";
 
 const router = useRouter();
 const store = useAppStore();
+const { t } = useI18n();
 
 const { locale } = useI18n();
 const isLanguageOpen = ref(false);
 
-function handleLogin() {
-  store.login("John");
-  router.push("/dashboard");
-}
+const email = ref("");
+const password = ref("");
 
+const errors = ref({
+  email: "",
+  password: "",
+});
+
+function validateForm() {
+  errors.value.email = "";
+  errors.value.password = "";
+
+  let valid = true;
+
+  // Validation email
+  if (!email.value) {
+    errors.value.email = t("requiredEmail");
+    valid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    errors.value.email = t("invalidFormat");
+    valid = false;
+  }
+
+  // Validation password
+  if (!password.value) {
+    errors.value.password = t("requiredPassword");
+    valid = false;
+  } else if (password.value.length < 6) {
+    errors.value.password = t("passwordLength");
+    valid = false;
+  }
+
+  return valid;
+}
+function handleLogin() {
+  if (!validateForm()) {
+    return;
+  }
+  const user = userMocks.find(
+    (u) => u.email === email.value && u.password === password.value,
+  );
+
+  if (!user) {
+    toast.error(t("invalidEmailOrPassword"), {
+      autoClose: 1000,
+    });
+    return;
+  }
+
+  store.login(user.name);
+  router.push("/dashboard");
+  toast.success(t("loginSuccess"), {
+    autoClose: 1000,
+  });
+}
 const handleGoogleLogin = () => {
   googleTokenLogin().then((response) => {
-    console.log(response);
+    console.log("response", response);
   });
 };
 
@@ -38,9 +91,9 @@ const switchLanguage = (lang) => {
         <div class="relative">
           <!-- Button -->
           <button
-            @click="isLanguageOpen = !isLanguageOpen"
             class="flex items-center justify-center text-white hover:text-gray-600 p-2 rounded-full"
             type="button"
+            @click="isLanguageOpen = !isLanguageOpen"
           >
             <!-- Globe icon -->
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -87,27 +140,20 @@ const switchLanguage = (lang) => {
             <ul class="p-2 text-sm font-medium">
               <li>
                 <button
-                  @click="
-                    $i18n.locale = 'en';
-                    isLanguageOpen = false;
-                  "
                   class="flex items-center w-full p-2 hover:bg-neutral-tertiary-medium rounded"
+                  @click="() => switchLanguage('en')"
                 >
-                  <span class="fi fi-gb fis mr-2"></span>
-                  En
+                  <span class="fi fi-gb fis mr-2" />> En
                 </button>
               </li>
               <hr class="border-stone-800 dark:border-white" />
 
               <li>
                 <button
-                  @click="
-                    $i18n.locale = 'fr';
-                    isLanguageOpen = false;
-                  "
                   class="flex items-center w-full p-2 hover:bg-neutral-tertiary-medium rounded"
+                  @click="() => switchLanguage('fr')"
                 >
-                  <span class="fi fi-fr fis mr-2"></span>
+                  <span class="fi fi-fr fis mr-2" />
                   Fr
                 </button>
               </li>
@@ -132,17 +178,20 @@ const switchLanguage = (lang) => {
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form @submit.prevent="handleLogin" class="space-y-6">
+        <form class="space-y-6" @submit.prevent="handleLogin">
           <div>
             <label class="block text-sm font-medium text-gray-100">
               {{ $t("email") }}
             </label>
 
             <input
+              v-model="email"
               type="email"
-              required
               class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
             />
+            <p v-if="errors.email" class="mt-1 text-sm text-red-400">
+              {{ errors.email }}
+            </p>
           </div>
 
           <div>
@@ -151,11 +200,13 @@ const switchLanguage = (lang) => {
             </label>
 
             <input
+              v-model="password"
               type="password"
-              required
               class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
             />
-
+            <p v-if="errors.password" class="mt-1 text-sm text-red-400">
+              {{ errors.password }}
+            </p>
             <a href="#" class="text-sm text-indigo-400">
               {{ $t("forgotPassword") }}
             </a>

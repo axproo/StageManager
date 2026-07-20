@@ -26,7 +26,25 @@ export default [
 
     rules: {
       "vue/html-indent": "off",
-
+      "vue/html-self-closing": [
+        "error",
+        {
+          html: {
+            void: "always",
+            normal: "always",
+            component: "always",
+          },
+        },
+      ],
+      "vue/max-attributes-per-line": [
+        "error",
+        {
+          singleline: 3,
+          multiline: {
+            max: 1,
+          },
+        },
+      ],
       // Remove unused imports automatically
       "unused-imports/no-unused-imports": "error",
       "vue/singleline-html-element-content-newline": "off",

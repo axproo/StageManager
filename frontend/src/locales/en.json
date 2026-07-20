@@ -7,5 +7,11 @@
   "signInWithGoogle": "Sign in with Google",
   "or": "Or",
   "notMember": "Not a member?",
-  "createAccount": "Create your account"
+  "createAccount": "Create your account",
+  "requiredEmail": "Email is required",
+  "requiredPassword": "Password is required",
+  "invalidFormat": "Invalid email format",
+  "passwordLength": "Password must contain at least 6 characters",
+  "invalidEmailOrPassword": "Invalid email or password",
+  "loginSuccess": "Successfully Logged In"
 }
