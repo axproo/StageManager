@@ -2,163 +2,199 @@
 import { useAppStore } from "@stores/user.store";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
+import { googleTokenLogin } from "vue3-google-login";
+import { ref } from "vue";
 
 const router = useRouter();
 const store = useAppStore();
+
 const { locale } = useI18n();
+const isLanguageOpen = ref(false);
 
 function handleLogin() {
-  store.login("John"); // Update the store
-  router.push("/dashboard"); // Redirect to dashboard
+  store.login("John");
+  router.push("/dashboard");
 }
+
+const handleGoogleLogin = () => {
+  googleTokenLogin().then((response) => {
+    console.log(response);
+  });
+};
+
+const switchLanguage = (lang) => {
+  locale.value = lang;
+  isLanguageOpen.value = false; // ferme après sélection
+};
 </script>
 
 <template>
-  <div class="min-h-screen flex bg-gray-900">
-    <!-- Partie gauche : Login -->
+  <div class="relative min-h-screen flex bg-gray-900">
+    <!-- LEFT LOGIN SIDE -->
     <div
-      class="w-full lg:w-2/5 flex flex-col justify-center px-6 py-12 lg:px-12"
+      class="relative w-full lg:w-2/5 flex flex-col justify-center px-6 py-12 lg:px-12"
     >
+      <div class="absolute top-4 right-4 z-50">
+        <div class="relative">
+          <!-- Button -->
+          <button
+            @click="isLanguageOpen = !isLanguageOpen"
+            class="flex items-center justify-center text-white hover:text-gray-600 p-2 rounded-full"
+            type="button"
+          >
+            <!-- Globe icon -->
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path
+                d="M12 3C12 3 8.5 6 8.5 12C8.5 18 12 21 12 21"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path
+                d="M12 3C12 3 15.5 6 15.5 12C15.5 18 12 21 12 21"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path d="M3 12H21" stroke="currentColor" stroke-width="2" />
+            </svg>
+
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 9-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Dropdown -->
+          <div
+            v-if="isLanguageOpen"
+            class="absolute right-0 mt-2 z-10 w-44 bg-white text-black border border-default-medium rounded-base shadow-lg"
+          >
+            <ul class="p-2 text-sm font-medium">
+              <li>
+                <button
+                  @click="
+                    $i18n.locale = 'en';
+                    isLanguageOpen = false;
+                  "
+                  class="flex items-center w-full p-2 hover:bg-neutral-tertiary-medium rounded"
+                >
+                  <span class="fi fi-gb fis mr-2"></span>
+                  En
+                </button>
+              </li>
+              <hr class="border-stone-800 dark:border-white" />
+
+              <li>
+                <button
+                  @click="
+                    $i18n.locale = 'fr';
+                    isLanguageOpen = false;
+                  "
+                  class="flex items-center w-full p-2 hover:bg-neutral-tertiary-medium rounded"
+                >
+                  <span class="fi fi-fr fis mr-2"></span>
+                  Fr
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGIN CONTENT -->
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           src="../assets/logo.jpg"
-          alt="Your Company"
           class="mx-auto h-24 w-24 rounded-full object-cover"
+          alt="logo"
         />
 
         <h2
-          class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white"
+          class="mt-10 text-center text-2xl font-bold tracking-tight text-white"
         >
           {{ $t("login") }}
         </h2>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action="#" method="POST" class="space-y-6">
+        <form @submit.prevent="handleLogin" class="space-y-6">
           <div>
-            <label
-              for="email"
-              class="block text-sm/6 font-medium text-gray-100"
-            >
+            <label class="block text-sm font-medium text-gray-100">
               {{ $t("email") }}
             </label>
 
-            <div class="mt-2">
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                autocomplete="email"
-                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-              />
-            </div>
+            <input
+              type="email"
+              required
+              class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
+            />
           </div>
 
           <div>
-            <div class="flex items-center justify-between">
-              <label
-                for="password"
-                class="block text-sm/6 font-medium text-gray-100"
-              >
-                {{ $t("password") }}
-              </label>
-            </div>
+            <label class="block text-sm font-medium text-gray-100">
+              {{ $t("password") }}
+            </label>
 
-            <div class="mt-2">
-              <input
-                id="password"
-                type="password"
-                name="password"
-                required
-                autocomplete="current-password"
-                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-              />
-            </div>
-            <a
-              href="#"
-              class="text-sm font-semibold text-indigo-400 hover:text-indigo-300"
-            >
+            <input
+              type="password"
+              required
+              class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
+            />
+
+            <a href="#" class="text-sm text-indigo-400">
               {{ $t("forgotPassword") }}
             </a>
           </div>
 
-          <div>
-            <button
-              type="submit"
-              class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
-              {{ $t("signIn") }}
-            </button>
-          </div>
+          <button
+            type="submit"
+            class="w-full rounded-md bg-indigo-500 py-2 text-white font-semibold hover:bg-indigo-400"
+          >
+            {{ $t("signIn") }}
+          </button>
           <div
             class="py-3 flex items-center text-sm text-white before:flex-1 before:border-t before:border-stone-200 before:me-6 after:flex-1 after:border-t after:border-stone-200 after:ms-6 dark:text-neutral-200 dark:before:border-neutral-600 dark:after:border-neutral-600"
           >
             {{ $t("or") }}
           </div>
-          <button
-            type="button"
-            class="py-2.5 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-stone-200 bg-white text-stone-800 shadow-2xs hover:bg-stone-50 focus:outline-hidden focus:bg-stone-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-          >
-            <svg
-              class="shrink-0 size-4"
-              width="33"
-              height="32"
-              viewBox="0 0 33 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_4132_5805adfqfqdq121)">
-                <path
-                  d="M32.2566 16.36C32.2566 15.04 32.1567 14.08 31.9171 13.08H16.9166V19.02H25.7251C25.5454 20.5 24.5866 22.72 22.4494 24.22L22.4294 24.42L27.1633 28.1L27.4828 28.14C30.5189 25.34 32.2566 21.22 32.2566 16.36Z"
-                  fill="#4285F4"
-                ></path>
-                <path
-                  d="M16.9166 32C21.231 32 24.8463 30.58 27.5028 28.12L22.4694 24.2C21.1111 25.14 19.3135 25.8 16.9366 25.8C12.7021 25.8 9.12677 23 7.84844 19.16L7.66867 19.18L2.71513 23L2.65521 23.18C5.2718 28.4 10.6648 32 16.9166 32Z"
-                  fill="#34A853"
-                ></path>
-                <path
-                  d="M7.82845 19.16C7.48889 18.16 7.28915 17.1 7.28915 16C7.28915 14.9 7.48889 13.84 7.80848 12.84V12.62L2.81499 8.73999L2.6552 8.81999C1.55663 10.98 0.937439 13.42 0.937439 16C0.937439 18.58 1.55663 21.02 2.63522 23.18L7.82845 19.16Z"
-                  fill="#FBBC05"
-                ></path>
-                <path
-                  d="M16.9166 6.18C19.9127 6.18 21.9501 7.48 23.0886 8.56L27.6027 4.16C24.8263 1.58 21.231 0 16.9166 0C10.6648 0 5.27181 3.6 2.63525 8.82L7.80851 12.84C9.10681 8.98 12.6821 6.18 16.9166 6.18Z"
-                  fill="#EB4335"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_4132_5805adfqfqdq121">
-                  <rect
-                    width="32"
-                    height="32"
-                    fill="white"
-                    transform="translate(0.937439)"
-                  ></rect>
-                </clipPath>
-              </defs>
-            </svg>
-            {{ $t("signInWithGoogle") }}
-          </button>
+
+          <GoogleLogin
+            class="w-full bg-white rounded-lg py-2"
+            :callback="handleGoogleLogin"
+          />
         </form>
 
         <p class="mt-10 text-center text-sm text-gray-400">
           {{ $t("notMember") }}
-          <a
-            href="#"
-            class="font-semibold text-indigo-400 hover:text-indigo-300"
-          >
+
+          <a href="#" class="text-indigo-400 font-semibold">
             {{ $t("createAccount") }}
           </a>
         </p>
       </div>
     </div>
 
-    <!-- Partie droite : Image -->
+    <!-- RIGHT IMAGE SIDE -->
     <div class="hidden lg:block lg:w-3/5 overflow-hidden">
       <img
         src="../assets/desktop.jpg"
-        alt="Login illustration"
         class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+        alt="login"
       />
     </div>
   </div>
