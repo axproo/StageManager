@@ -13,5 +13,6 @@
   "invalidFormat": "Format email invalide",
   "passwordLength": "Mot de passe doit au moins contenir 6 caractères",
   "invalidEmailOrPassword": "Email ou mot de passe incorrect",
-  "loginSuccess": "Authentification avec succès"
+  "loginSuccess": "Authentification avec succès",
+  "googleLoginFailed": "Connexion avec Google échoué"
 }

@@ -2,10 +2,10 @@
 import { useAppStore } from "@stores/user.store";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
-import { googleTokenLogin } from "vue3-google-login";
 import { ref } from "vue";
 import { userMocks } from "../mocks/userMock";
 import { toast } from "vue3-toastify";
+import { jwtDecode } from "jwt-decode";
 
 const router = useRouter();
 const store = useAppStore();
@@ -69,10 +69,21 @@ function handleLogin() {
     autoClose: 1000,
   });
 }
-const handleGoogleLogin = () => {
-  googleTokenLogin().then((response) => {
-    console.log("response", response);
+const handleGoogleLogin = (response) => {
+  const user = jwtDecode(response.credential);
+
+  if (!response.credential) {
+    toast.error(t("googleLoginFailed"));
+    return;
+  }
+
+  store.login(user.name);
+
+  toast.success(t("loginSuccess"), {
+    autoClose: 1000,
   });
+
+  router.push("/dashboard");
 };
 
 const switchLanguage = (lang) => {
@@ -143,7 +154,7 @@ const switchLanguage = (lang) => {
                   class="flex items-center w-full p-2 hover:bg-neutral-tertiary-medium rounded"
                   @click="() => switchLanguage('en')"
                 >
-                  <span class="fi fi-gb fis mr-2" />> En
+                  <span class="fi fi-gb fis mr-2" /> En
                 </button>
               </li>
               <hr class="border-stone-800 dark:border-white" />
