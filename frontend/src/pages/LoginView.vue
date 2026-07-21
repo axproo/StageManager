@@ -244,7 +244,7 @@ const switchLanguage = (lang) => {
         <p class="mt-10 text-center text-sm text-gray-400">
           {{ $t("notMember") }}
 
-          <a href="#" class="text-indigo-400 font-semibold">
+          <a href="/signUp" class="text-indigo-400 font-semibold">
             {{ $t("createAccount") }}
           </a>
         </p>

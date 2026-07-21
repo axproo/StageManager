@@ -1,6 +1,7 @@
 const components = {
   DashboardView: () => import("@pages/DashboardView.vue"),
   LoginView: () => import("@pages/LoginView.vue"),
+  SignUpView: () => import("@pages/SignUpView.vue"),
   ErrorView: () => import("@pages/ErrorView.vue"),
 };
 export const mockRoutes = [
@@ -15,6 +16,14 @@ export const mockRoutes = [
     meta: {
       title: "Login",
       guestOnly: true,
+    },
+  },
+  {
+    path: "/signUp",
+    name: "signup",
+    component: components.SignUpView,
+    meta: {
+      title: "sIGNuP",
     },
   },
   {
