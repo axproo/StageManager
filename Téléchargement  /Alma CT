@@ -1,1 +1,1 @@
-lxc launch images:almalinux/9 my-almalinux-ct
+pveam download local almalinux-9-default_*.tar.xz
