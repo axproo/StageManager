@@ -14,4 +14,12 @@ Afficher les templates Debian disponibles :
 
 pveam available | grep debian
 
+### **Étape 3 : Télécharger le template Debian**
+
+Télécharger le template choisi dans le stockage des conteneurs Proxmox (généralement local) :
+
+pveam download local debian-12-standard_12.2-1_amd64.tar.zst
+
+Remplacer debian-12-standard_12.2-1_amd64.tar.zst par le nom exact obtenu avec la commande précédente.
+
 
