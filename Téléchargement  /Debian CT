@@ -1,0 +1,17 @@
+# **Télécharger Debian sur Proxmox**
+
+## **1\. Pour un conteneur Debian LXC (CT)**
+
+### **Étape 1 : Mettre à jour la liste des templates**
+
+Récupérer les derniers templates disponibles depuis les dépôts Proxmox :
+
+pveam update
+
+### **Étape 2 : Lister les templates Debian disponibles**
+
+Afficher les templates Debian disponibles :
+
+pveam available | grep debian
+
+
