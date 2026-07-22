@@ -1,0 +1,1 @@
+lxc launch images:almalinux/9 my-almalinux-ct
