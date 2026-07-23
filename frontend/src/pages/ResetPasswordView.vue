@@ -7,81 +7,25 @@ import { toast } from "vue3-toastify";
 
 const router = useRouter();
 const { t } = useI18n();
-const showPassword = ref(false);
-const showConfirmPassword = ref(false);
 
 const { locale } = useI18n();
 const isLanguageOpen = ref(false);
 
-const email = ref("");
-const name = ref("");
-const lastName = ref("");
+const showPassword = ref(false);
+const showConfirmPassword = ref(false);
+
 const password = ref("");
 const confirmPassword = ref("");
 
 const errors = ref({
-  email: "",
   password: "",
-  name: "",
-  lastName: "",
   confirmPassword: "",
-});
-watch(email, () => {
-  errors.value.email = "";
-});
-
-watch(password, () => {
-  errors.value.password = "";
-});
-watch(name, () => {
-  errors.value.name = "";
-});
-watch(lastName, () => {
-  errors.value.lastName = "";
-});
-watch(confirmPassword, () => {
-  errors.value.confirmPassword = "";
 });
 
 function validateForm() {
-  errors.value.email = "";
   errors.value.password = "";
-  errors.value.name = "";
-  errors.value.lastName = "";
   errors.value.confirmPassword = "";
-
   let valid = true;
-
-  // Validation email
-  if (!email.value) {
-    errors.value.email = t("requiredEmail");
-    valid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    errors.value.email = t("invalidFormat");
-    valid = false;
-  }
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-  const emailExists = users.some(
-    (user) => user.email.toLowerCase() === email.value.toLowerCase(),
-  );
-
-  if (emailExists) {
-    errors.value.email = t("emailAlreadyExists");
-    valid = false;
-  }
-
-  // Validation name
-  if (!name.value) {
-    errors.value.name = t("requiredName");
-    valid = false;
-  }
-
-  // Validation last name
-  if (!lastName.value) {
-    errors.value.lastName = t("requiredLastName");
-    valid = false;
-  }
 
   // Validation password
   if (!password.value) {
@@ -89,6 +33,16 @@ function validateForm() {
     valid = false;
   } else if (password.value.length < 6) {
     errors.value.password = t("passwordLength");
+    valid = false;
+  }
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const email = localStorage.getItem("email");
+
+  const user = users.find((u) => u.email === email);
+  console.log(user);
+
+  if (password.value === user.password) {
+    errors.value.password = t("passwordMatchesOldPassword");
     valid = false;
   }
 
@@ -103,36 +57,39 @@ function validateForm() {
 
   return valid;
 }
-
+watch(password, () => {
+  errors.value.password = "";
+});
+watch(confirmPassword, () => {
+  errors.value.confirmPassword = "";
+});
 function handleSubmit() {
+  const email = localStorage.getItem("email");
   if (!validateForm()) {
     return;
   }
-  const user = {
-    email: email.value,
-    password: password.value,
-    name: name.value,
-    lastName: lastName.value,
-  };
   const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-  // Ajouter un utilisateur
-  users.push(user);
-  console.log(users);
-  // Sauvegarder
+  const user = users.find((u) => u.email === email);
+  if (!user) {
+    toast.error(t("userNotFound"));
+    return;
+  }
+  user.password = password.value;
+  // Sauvegarder les modifications
   localStorage.setItem("users", JSON.stringify(users));
 
+  toast.success(t("passwordUpdated"));
   router.push("/login");
-  toast.success(t("signUpSuccess"), {
-    autoClose: 10000,
-  });
 }
+
 const togglePassword = () => {
   showPassword.value = !showPassword.value;
 };
 const toggleConfirmPassword = () => {
   showConfirmPassword.value = !showConfirmPassword.value;
 };
+
 const switchLanguage = (lang) => {
   locale.value = lang;
   isLanguageOpen.value = false; // ferme après sélection
@@ -219,7 +176,6 @@ const switchLanguage = (lang) => {
         </div>
       </div>
 
-      <!-- SignUp CONTENT -->
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           src="../assets/logo.jpg"
@@ -230,54 +186,12 @@ const switchLanguage = (lang) => {
         <h2
           class="mt-10 text-center text-2xl font-bold tracking-tight text-white"
         >
-          {{ $t("createAccount") }}
+          {{ $t("resetPassword") }}
         </h2>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form class="space-y-6" @submit.prevent="handleSubmit">
-          <div>
-            <label class="block text-sm font-medium text-gray-100">
-              {{ $t("email") }}
-            </label>
-
-            <input
-              v-model="email"
-              type="email"
-              class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
-            />
-            <p v-if="errors.email" class="mt-1 text-sm text-red-400">
-              {{ errors.email }}
-            </p>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-100">
-              {{ $t("name") }}
-            </label>
-
-            <input
-              v-model="name"
-              type="text"
-              class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
-            />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-400">
-              {{ errors.name }}
-            </p>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-100">
-              {{ $t("lastName") }}
-            </label>
-
-            <input
-              v-model="lastName"
-              type="text"
-              class="mt-2 block w-full rounded-md bg-white/5 px-3 py-2 text-white outline outline-1 outline-white/10"
-            />
-            <p v-if="errors.lastName" class="mt-1 text-sm text-red-400">
-              {{ errors.lastName }}
-            </p>
-          </div>
           <div>
             <label class="block text-sm font-medium text-gray-100">
               {{ $t("password") }}
@@ -373,7 +287,7 @@ const switchLanguage = (lang) => {
             type="submit"
             class="w-full rounded-md bg-indigo-500 py-2 text-white font-semibold hover:bg-indigo-400"
           >
-            {{ $t("createAccount") }}
+            {{ $t("resetPassword") }}
           </button>
         </form>
       </div>

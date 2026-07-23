@@ -3,6 +3,8 @@ const components = {
   LoginView: () => import("@pages/LoginView.vue"),
   SignUpView: () => import("@pages/SignUpView.vue"),
   ErrorView: () => import("@pages/ErrorView.vue"),
+  ForgotPasswordView: () => import("@pages/ForgotPasswordView.vue"),
+  ResetPasswordView: () => import("@pages/ResetPasswordView.vue"),
 };
 export const mockRoutes = [
   {
@@ -23,7 +25,23 @@ export const mockRoutes = [
     name: "signup",
     component: components.SignUpView,
     meta: {
-      title: "sIGNuP",
+      title: "signUP",
+    },
+  },
+  {
+    path: "/forgot-password",
+    name: "forgotPassword",
+    component: components.ForgotPasswordView,
+    meta: {
+      title: "forgotPassword",
+    },
+  },
+  {
+    path: "/reset-password",
+    name: "reset-password",
+    component: components.ResetPasswordView,
+    meta: {
+      title: "reset-password",
     },
   },
   {

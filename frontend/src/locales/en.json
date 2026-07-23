@@ -22,5 +22,14 @@
   "invalidEmailOrPassword": "Invalid email or password",
   "loginSuccess": "Successfully Logged In",
   "signUpSuccess": "Registred Successfully",
-  "googleLoginFailed": "Google login failed"
+  "googleLoginFailed": "Google login failed",
+  "resetPasswordMail": "Enter the email address linked to your account, and we`ll send you a link to reset your password.",
+  "sendResetLink": "Send reset link",
+  "resetPassword": "Reset password",
+  "userNotFound": "User not found",
+  "resetLinkSuccess": "Reset link sent successfully",
+  "emailSendingFailed": "Email sending failed",
+  "emailAlreadyExists": "Email already exists",
+  "passwordMatchesOldPassword": "Password matches old password",
+  "passwordUpdated": "Password updated successfully"
 }
