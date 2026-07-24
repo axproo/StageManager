@@ -6,6 +6,7 @@ import { ref, watch } from "vue";
 import { userMocks } from "../mocks/userMock";
 import { toast } from "vue3-toastify";
 import { jwtDecode } from "jwt-decode";
+import ButtonUi from "@components/ui/buttons/ButtonUi.vue";
 
 const router = useRouter();
 const store = useAppStore();
@@ -271,13 +272,8 @@ const switchLanguage = (lang) => {
               {{ $t("forgotPassword") }}
             </a>
           </div>
+          <ButtonUi :title="$t('signIn')" variant="primary" />
 
-          <button
-            type="submit"
-            class="w-full rounded-md bg-indigo-500 py-2 text-white font-semibold hover:bg-indigo-400"
-          >
-            {{ $t("signIn") }}
-          </button>
           <div
             class="py-3 flex items-center text-sm text-white before:flex-1 before:border-t before:border-stone-200 before:me-6 after:flex-1 after:border-t after:border-stone-200 after:ms-6 dark:text-neutral-200 dark:before:border-neutral-600 dark:after:border-neutral-600"
           >

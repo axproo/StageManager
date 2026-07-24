@@ -3,6 +3,7 @@ import { useI18n } from "vue-i18n";
 import { ref, watch } from "vue";
 import { toast } from "vue3-toastify";
 import emailjs from "@emailjs/browser";
+import ButtonUi from "@components/ui/buttons/ButtonUi.vue";
 
 const { t } = useI18n();
 
@@ -181,12 +182,7 @@ const switchLanguage = (lang) => {
               {{ errors.email }}
             </p>
           </div>
-          <button
-            type="submit"
-            class="w-full rounded-md bg-indigo-500 py-2 text-white font-semibold hover:bg-indigo-400"
-          >
-            {{ $t("sendResetLink") }}
-          </button>
+          <ButtonUi :title="$t('sendResetLink')" variant="primary" />
         </form>
       </div>
     </div>

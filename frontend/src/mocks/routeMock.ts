@@ -1,10 +1,10 @@
 const components = {
-  DashboardView: () => import("@pages/DashboardView.vue"),
-  LoginView: () => import("@pages/LoginView.vue"),
-  SignUpView: () => import("@pages/SignUpView.vue"),
-  ErrorView: () => import("@pages/ErrorView.vue"),
-  ForgotPasswordView: () => import("@pages/ForgotPasswordView.vue"),
-  ResetPasswordView: () => import("@pages/ResetPasswordView.vue"),
+  DashboardView: () => import("@pages/Dashboard.vue"),
+  LoginView: () => import("@pages/Login.vue"),
+  SignUpView: () => import("@pages/SignUp.vue"),
+  ErrorView: () => import("@pages/Error.vue"),
+  ForgotPasswordView: () => import("@pages/ForgotPassword.vue"),
+  ResetPasswordView: () => import("@pages/ResetPassword.vue"),
 };
 export const mockRoutes = [
   {
@@ -18,6 +18,7 @@ export const mockRoutes = [
     meta: {
       title: "Login",
       guestOnly: true,
+      public: true,
     },
   },
   {
@@ -26,6 +27,7 @@ export const mockRoutes = [
     component: components.SignUpView,
     meta: {
       title: "signUP",
+      public: true,
     },
   },
   {
@@ -34,6 +36,7 @@ export const mockRoutes = [
     component: components.ForgotPasswordView,
     meta: {
       title: "forgotPassword",
+      public: true,
     },
   },
   {
@@ -42,6 +45,7 @@ export const mockRoutes = [
     component: components.ResetPasswordView,
     meta: {
       title: "reset-password",
+      public: true,
     },
   },
   {
@@ -51,6 +55,7 @@ export const mockRoutes = [
     meta: {
       title: "Dashboard",
       requiresAuth: true,
+      public: false,
     },
   },
   {

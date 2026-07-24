@@ -11,6 +11,7 @@ export default defineConfig({
       "@router": path.resolve(__dirname, "src/router"),
       "@stores": path.resolve(__dirname, "src/stores"),
       "@pages": path.resolve(__dirname, "src/pages"),
+      "@components": path.resolve(__dirname, "src/components"),
     },
   },
   server: {

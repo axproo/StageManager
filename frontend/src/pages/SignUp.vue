@@ -4,6 +4,7 @@ import { useI18n } from "vue-i18n";
 import { ref, watch } from "vue";
 import { userMocks } from "../mocks/userMock";
 import { toast } from "vue3-toastify";
+import ButtonUi from "@components/ui/buttons/ButtonUi.vue";
 
 const router = useRouter();
 const { t } = useI18n();
@@ -369,12 +370,7 @@ const switchLanguage = (lang) => {
               </p>
             </div>
           </div>
-          <button
-            type="submit"
-            class="w-full rounded-md bg-indigo-500 py-2 text-white font-semibold hover:bg-indigo-400"
-          >
-            {{ $t("createAccount") }}
-          </button>
+          <ButtonUi :title="$t('createAccount')" variant="primary" />
         </form>
       </div>
     </div>
