@@ -31,5 +31,6 @@
   "emailSendingFailed": "Email sending failed",
   "emailAlreadyExists": "Email already exists",
   "passwordMatchesOldPassword": "Password matches old password",
-  "passwordUpdated": "Password updated successfully"
+  "passwordUpdated": "Password updated successfully",
+  "signOut": "Sign Out"
 }

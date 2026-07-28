@@ -31,5 +31,6 @@
   "emailSendingFailed": "Envoi d'email échoué",
   "emailAlreadyExists": "Email existe déjà",
   "passwordMatchesOldPassword": "Mot de passe est identique à l'ancien mot de passe",
-  "passwordUpdated": "Mot de passe mis à jour avec succès"
+  "passwordUpdated": "Mot de passe mis à jour avec succès",
+  "signOut": "Déconnexion"
 }

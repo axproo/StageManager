@@ -12,6 +12,8 @@ export default defineConfig({
       "@stores": path.resolve(__dirname, "src/stores"),
       "@pages": path.resolve(__dirname, "src/pages"),
       "@components": path.resolve(__dirname, "src/components"),
+      "@auth": "/packages/plugins/auth/src",
+      "@plugins": "/packages/plugins",
     },
   },
   server: {

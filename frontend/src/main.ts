@@ -8,6 +8,9 @@ import vue3GoogleLogin from "vue3-google-login";
 import "flag-icons/css/flag-icons.min.css";
 import Vue3Toastify from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+//import { AuthPlugin } from "@stagemanager/auth";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
 
 const pinia = createPinia();
 const app = createApp(App);
@@ -20,5 +23,7 @@ app.use(vue3GoogleLogin, {
 });
 app.use(pinia);
 app.use(i18n);
+//app.use(AuthPlugin);
+app.use(ElementPlus);
 
 app.use(router).mount("#app");

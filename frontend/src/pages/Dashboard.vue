@@ -1,9 +1,7 @@
 <script setup>
 import { useAppStore } from "@stores/user.store";
-import NavBarView from "@components/base/navbar/NavBarView.vue";
+import AppLayout from "@components/layout/AppLayout.vue";
 
 const store = useAppStore();
 </script>
-<template>
-  <NavBarView />
-</template>
+<template></template>

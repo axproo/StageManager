@@ -5,6 +5,7 @@ const components = {
   ErrorView: () => import("@pages/Error.vue"),
   ForgotPasswordView: () => import("@pages/ForgotPassword.vue"),
   ResetPasswordView: () => import("@pages/ResetPassword.vue"),
+  AppLayout: () => import("@components/layout/AppLayout.vue"),
 };
 export const mockRoutes = [
   {
@@ -49,14 +50,23 @@ export const mockRoutes = [
     },
   },
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: components.DashboardView,
+    path: "/",
+    component: components.AppLayout,
     meta: {
-      title: "Dashboard",
       requiresAuth: true,
-      public: false,
     },
+    children: [
+      {
+        path: "dashboard",
+        name: "dashboard",
+        component: components.DashboardView,
+        meta: {
+          title: "Dashboard",
+          requiresAuth: true,
+          public: false,
+        },
+      },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
