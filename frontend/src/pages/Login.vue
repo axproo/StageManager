@@ -78,6 +78,8 @@ function handleLogin() {
     });
     return;
   }
+  console.log(user);
+  localStorage.setItem("currentUser", JSON.stringify(user));
 
   store.login(user.name);
   router.push("/dashboard");

@@ -5,6 +5,7 @@ const components = {
   ErrorView: () => import("@pages/Error.vue"),
   ForgotPasswordView: () => import("@pages/ForgotPassword.vue"),
   ResetPasswordView: () => import("@pages/ResetPassword.vue"),
+  ProfileView: () => import("@pages/Profile.vue"),
   AppLayout: () => import("@components/layout/AppLayout.vue"),
 };
 export const mockRoutes = [
@@ -49,6 +50,7 @@ export const mockRoutes = [
       public: true,
     },
   },
+
   {
     path: "/",
     component: components.AppLayout,
@@ -63,6 +65,15 @@ export const mockRoutes = [
         meta: {
           title: "Dashboard",
           requiresAuth: true,
+          public: false,
+        },
+      },
+      {
+        path: "profile",
+        name: "profile",
+        component: components.ProfileView,
+        meta: {
+          title: "profile",
           public: false,
         },
       },

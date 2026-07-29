@@ -1,28 +1,18 @@
 <script setup>
-import { useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
-import { ref, watch } from "vue";
-import { userMocks } from "../mocks/userMock";
-import { toast } from "vue3-toastify";
-import SwitchLang from "@components/base/SwitchLang.vue";
 import UserForm from "@/components/forms/UserForm.vue";
+import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
 
 const router = useRouter();
-const { t } = useI18n();
 
-function handleSubmit(user) {
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  // Ajouter un utilisateur
-  users.push(user);
-  console.log(users);
-  // Sauvegarder
-  localStorage.setItem("users", JSON.stringify(users));
-
-  router.push("/login");
-  toast.success(t("signUpSuccess"), {
+function updateUser(data) {
+  localStorage.setItem("currentUser", JSON.stringify(data));
+  toast.success(t("operationSuccess"), {
     autoClose: 10000,
   });
+  router.push("/dashboard");
 }
 </script>
 
@@ -44,11 +34,10 @@ function handleSubmit(user) {
         <h2
           class="mt-10 text-center text-2xl font-bold tracking-tight text-white"
         >
-          {{ $t("createAccount") }}
+          {{ $t("updateAccount") }}
         </h2>
       </div>
-
-      <UserForm @submit="handleSubmit" />
+      <UserForm :user="currentUser" :isEdit="true" @submit="updateUser" />
     </div>
   </div>
 </template>

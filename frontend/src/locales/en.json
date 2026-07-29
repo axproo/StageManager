@@ -32,5 +32,7 @@
   "emailAlreadyExists": "Email already exists",
   "passwordMatchesOldPassword": "Password matches old password",
   "passwordUpdated": "Password updated successfully",
-  "signOut": "Sign Out"
+  "signOut": "Sign Out",
+  "updateAccount": "Update your account",
+  "operationSuccess": "Operation done successfully"
 }

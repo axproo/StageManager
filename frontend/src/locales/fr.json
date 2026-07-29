@@ -32,5 +32,7 @@
   "emailAlreadyExists": "Email existe déjà",
   "passwordMatchesOldPassword": "Mot de passe est identique à l'ancien mot de passe",
   "passwordUpdated": "Mot de passe mis à jour avec succès",
-  "signOut": "Déconnexion"
+  "signOut": "Déconnexion",
+  "updateAccount": "Modifier votre compte",
+  "operationSuccess": "Opération effectuée avec succès"
 }
