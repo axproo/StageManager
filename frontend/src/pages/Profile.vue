@@ -2,9 +2,10 @@
 import UserForm from "@/components/forms/UserForm.vue";
 import { useRouter } from "vue-router";
 import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
-
+const { t } = useI18n();
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 function updateUser(data) {

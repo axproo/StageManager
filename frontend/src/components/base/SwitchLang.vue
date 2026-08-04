@@ -20,8 +20,8 @@ const switchLanguage = (lang) => {
         :class="[
           'flex items-center justify-center p-2 rounded-full transition-colors',
           scrolled
-            ? 'text-gray-800 hover:text-blue-600'
-            : 'text-white hover:text-gray-300',
+            ? 'text-white hover:text-gray-300'
+            : 'text-gray-800 hover:text-gray-600',
         ]"
         type="button"
         @click="isLanguageOpen = !isLanguageOpen"

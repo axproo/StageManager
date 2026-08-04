@@ -22,7 +22,7 @@ onUnmounted(() => {
   <nav
     :class="[
       'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-      isScrolled ? 'bg-white shadow-lg' : 'bg-gray-800',
+      isScrolled ? 'bg-[#200a83]' : 'bg-white shadow-lg',
     ]"
   >
     <div class="w-full px-6">
@@ -43,7 +43,7 @@ onUnmounted(() => {
             type="button"
             :class="[
               'rounded-full p-2  transition',
-              isScrolled ? 'text-black' : ' text-gray-300 ',
+              isScrolled ? 'text-gray-300' : 'text-black',
             ]"
           >
             <span class="sr-only">Notifications</span>

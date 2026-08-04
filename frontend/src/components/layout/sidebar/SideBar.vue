@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <ul v-for="(menu, idx) in menus">
-      <li>
-        <router-link :to="menu.path" :key="idx">{{ menu.name }}</router-link>
-      </li>
-    </ul>
+  <div class="bg-gray-100">
+    <p>Welcome baczzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzk</p>
   </div>
 </template>
 

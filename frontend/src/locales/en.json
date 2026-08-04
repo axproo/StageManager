@@ -34,5 +34,36 @@
   "passwordUpdated": "Password updated successfully",
   "signOut": "Sign Out",
   "updateAccount": "Update your account",
-  "operationSuccess": "Operation done successfully"
+  "operationSuccess": "Operation done successfully",
+  "about": "About",
+  "privacyPolicy": "Privacy policy",
+  "allRightsReserved": "All rights reserved",
+  "internShipManagementSystem": "Internship Management System",
+  "welcomeMessage": "Welcome to the Internship Management System. Manage interns, departments, supervisors and internship progress efficiently from one centralized platform.",
+  "exploreDashboard": "Explore",
+  "dashboardOverView": "Dashboard Overview",
+  "interns": "Interns",
+  "departements": "Departments",
+  "interships": "Internships",
+  "successRate": "Success Rate",
+  "quickOverview": "A quick overview of your internship management platform.",
+  "whatWeOffer": "What we offer",
+  "features": {
+    "manageInterns": {
+      "title": "Manage Interns",
+      "description": "Create, update and organize intern information with ease."
+    },
+    "departments": {
+      "title": "Departments",
+      "description": "Assign interns to departments and monitor their placement."
+    },
+    "trackProgress": {
+      "title": "Track Progress",
+      "description": "Follow internship status and monitor progress in real time."
+    },
+    "generateReports": {
+      "title": "Generate Reports",
+      "description": "Create reports and gain insights into internship activities."
+    }
+  }
 }

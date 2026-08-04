@@ -34,5 +34,50 @@
   "passwordUpdated": "Mot de passe mis à jour avec succès",
   "signOut": "Déconnexion",
   "updateAccount": "Modifier votre compte",
-  "operationSuccess": "Opération effectuée avec succès"
+  "operationSuccess": "Opération effectuée avec succès",
+  "about": "A propos",
+  "privacyPolicy": "Vie privé",
+  "allRightsReserved": "Tous les droits réservés",
+  "internShipManagementSystem": "Système de gestion des stages",
+  "welcomeMessage": "Bienvenue dans le système de gestion des stages. Gérez efficacement les stagiaires, les services, les superviseurs et le déroulement des stages depuis une plateforme centralisée.",
+  "exploreDashboard": "Découvrir",
+  "dashboardOverView": "Vue d'ensemble du tableau de bord",
+  "interns": "Stagiaires",
+  "departements": "Départements",
+  "interships": "Stages",
+  "successRate": "Taux de réussite",
+  "quickOverview": "Un aperçu rapide de votre plateforme de gestion des stages.",
+  "whatWeOffer": "Ce que nous offrons",
+  "features": {
+    "manageInterns": {
+      "title": "Gérer les stagiaires",
+      "description": "Créez, mettez à jour et organisez facilement les informations des stagiaires."
+    },
+    "departments": {
+      "title": "Départements",
+      "description": "Affectez les stagiaires aux départements et suivez leur placement."
+    },
+    "trackProgress": {
+      "title": "Suivre la progression",
+      "description": "Suivez le statut des stages et surveillez l'avancement en temps réel."
+    },
+    "generateReports": {
+      "title": "Générer des rapports",
+      "description": "Créez des rapports et obtenez des informations sur les activités de stage."
+    }
+  },
+  "quotes": [
+    {
+      "text": "Fixez vous des objectifs qui correspondent à votre potentiel et non à vos capacités. -Grant Cardone"
+    },
+    {
+      "text": "Il y a deux types de douleur, la douleur des regrets ou la douleur de la discipline, le choix est le vôtre. -Jim Rohn"
+    },
+    {
+      "text": "Soyez le changement que vous voulez voir dans le monde. -Mahatma Gandhi"
+    },
+    {
+      "text": "Le génie, ça n’existe pas. Le vrai succès s’enracine dans le travail. -Jacques Brel"
+    }
+  ]
 }

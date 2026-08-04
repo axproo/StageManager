@@ -50,7 +50,15 @@ export const mockRoutes = [
       public: true,
     },
   },
-
+  {
+    path: "/profile",
+    name: "profile",
+    component: components.ProfileView,
+    meta: {
+      title: "profile",
+      public: false,
+    },
+  },
   {
     path: "/",
     component: components.AppLayout,
@@ -65,15 +73,6 @@ export const mockRoutes = [
         meta: {
           title: "Dashboard",
           requiresAuth: true,
-          public: false,
-        },
-      },
-      {
-        path: "profile",
-        name: "profile",
-        component: components.ProfileView,
-        meta: {
-          title: "profile",
           public: false,
         },
       },
