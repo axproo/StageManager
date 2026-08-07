@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nom": "Asma Chaouat",
+    "departement": "Cybersécurité",
+    "date": "06/07/2026",
+    "statut": "ACTIVE"
+  },
+  {
+    "id": 2,
+    "nom": "Salma Helali",
+    "departement": "Cybersécurité",
+    "date": "06/07/2026",
+    "statut": "ACTIVE"
+  },
+  {
+    "id": 3,
+    "nom": "Amine Kaabi",
+    "departement": "Cybersécurité",
+    "date": "06/07/2026",
+    "statut": "ACTIVE"
+  }
+]

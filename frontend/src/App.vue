@@ -1,18 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth.store'
+import PublicNavbar from '@/layouts/PublicNavbar.vue'
+import DashboardSidebar from '@/layouts/DashboardSidebar.vue'
+import AppLayout from '@/components/ui/AppLayout.vue'
 
-import PublicNavbar from '@/components/layout/PublicNavbar.vue'
-import DashboardNavbar from '@/components/layout/DashboardNavbar.vue'
-
-const isLogged = ref(localStorage.getItem('token') !== null)
+const authStore = useAuthStore()
 </script>
 
 <template>
-  <DashboardNavbar v-if="isLogged" />
+  <!-- Partie publique -->
+  <template v-if="!authStore.token">
+    <PublicNavbar />
 
-  <PublicNavbar v-else />
-
-  <main>
     <RouterView />
-  </main>
+  </template>
+
+  <!-- Partie connectée -->
+  <AppLayout v-else>
+    <template #sidebar>
+      <DashboardSidebar />
+    </template>
+
+    <RouterView />
+  </AppLayout>
 </template>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Administrateur",
+    "email": "admin@axproo.com",
+    "password": "123456",
+    "role": "ADMIN"
+  },
+  {
+    "id": 2,
+    "name": "Responsable RH",
+    "email": "rh@axproo.com",
+    "password": "123456",
+    "role": "RESPONSABLE RH"
+  },
+  {
+    "id": 3,
+    "name": "Encadrant",
+    "email": "encadrant@axproo.com",
+    "password": "123456",
+    "role": "ENCADRANT"
+  },
+  {
+    "id": 4,
+    "name": "Asma Chaouat",
+    "email": "asma@axproo.com",
+    "password": "123456",
+    "role": "STAGIAIRE"
+  }
+]

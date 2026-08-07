@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nom": "Chaouat",
+    "prenom": "Asma",
+    "email": "asma@axproo.com",
+    "telephone": "22519294",
+    "dateNaissance": "1997-05-28",
+    "adresse": "Tunis",
+    "formation": "Cybersécurité",
+    "universite": "Sherbrooke Tunisie Canada",
+    "departement": "Cybersécurité",
+    "dateDebut": "2026-07-06",
+    "dateFin": "2026-09-06",
+    "status": "PENDING",
+    "createdAt": "2026-07-01T08:00:00"
+  },
+  {
+    "id": 2,
+    "nom": "Helali",
+    "prenom": "Salma",
+    "email": "salma@axproo.com",
+    "telephone": "22344936",
+    "dateNaissance": "2003-02-03",
+    "adresse": "Tunis",
+    "formation": "Développement Web",
+    "universite": "ISET",
+    "departement": "IT",
+    "dateDebut": "2026-07-06",
+    "dateFin": "2026-09-06",
+    "status": "ACTIVE",
+    "createdAt": "2026-07-10T10:30:00"
+  },
+  {
+    "id": 3,
+    "nom": "Kaabi",
+    "prenom": "Amine",
+    "email": "amine@axproo.com",
+    "telephone": "54461263",
+    "dateNaissance": "2004-04-19",
+    "adresse": "Tunis",
+    "formation": "Réseaux Informatiques",
+    "universite": "ENIS",
+    "departement": "IT",
+    "dateDebut": "2026-07-06",
+    "dateFin": "2026-09-06",
+    "status": "REFUSED",
+    "createdAt": "2026-07-28T14:15:00"
+  }
+]

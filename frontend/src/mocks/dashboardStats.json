@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Total Stagiaires",
+    "value": 7,
+    "icon": "👨‍🎓",
+    "variant": "primary",
+    "color": "blue"
+  },
+  {
+    "title": "Utilisateurs",
+    "value": 10,
+    "icon": "👥",
+    "variant": "info",
+    "color": "cyan"
+  },
+  {
+    "title": "Présences aujourd'hui",
+    "value": 6,
+    "icon": "✅",
+    "variant": "success",
+    "color": "green"
+  },
+  {
+    "title": "Départements",
+    "value": 6,
+    "icon": "🏢",
+    "variant": "purple",
+    "color": "purple"
+  }
+]

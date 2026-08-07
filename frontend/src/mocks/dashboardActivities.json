@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "text": "Nouvelle stagiaire ajoutée",
+    "time": "Il y a 10 minutes"
+  },
+  {
+    "id": 2,
+    "text": "Présence enregistrée",
+    "time": "Il y a 30 minutes"
+  },
+  {
+    "id": 3,
+    "text": "Utilisateur créé",
+    "time": "Il y a 1 heure"
+  }
+]

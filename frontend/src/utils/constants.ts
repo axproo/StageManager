@@ -1,0 +1,12 @@
+export const ROLES = {
+  ADMIN: 'ADMIN',
+  RH: 'RESPONSABLE RH',
+  ENCADRANT: 'ENCADRANT',
+  STAGIAIRE: 'STAGIAIRE',
+} as const
+
+export const STAGIAIRE_STATUS = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  REFUSED: 'REFUSED',
+} as const
