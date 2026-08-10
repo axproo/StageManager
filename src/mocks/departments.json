@@ -1,0 +1,5 @@
+[
+  { "id": "dep-info", "nom": "Informatique", "description": "Développement logiciel et infrastructure.", "responsableId": "u-resp-1" },
+  { "id": "dep-mkt", "nom": "Marketing", "description": "Communication et marketing digital.", "responsableId": "u-resp-1" },
+  { "id": "dep-fin", "nom": "Finance", "description": "Comptabilité et gestion financière.", "responsableId": null }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "tk-1",
+    "titre": "Analyser l'existant du module documentaire",
+    "description": "Étudier le code actuel et rédiger une note technique de cadrage.",
+    "assigneA": "u-stag-1",
+    "creePar": "u-tuteur-1",
+    "statut": "termine",
+    "priorite": "moyenne",
+    "dateEcheance": "2026-07-10"
+  },
+  {
+    "id": "tk-2",
+    "titre": "Maquetter l'interface de recherche documentaire",
+    "description": "Proposer 2 maquettes de la page de recherche.",
+    "assigneA": "u-stag-1",
+    "creePar": "u-tuteur-1",
+    "statut": "en_cours",
+    "priorite": "haute",
+    "dateEcheance": "2026-08-05"
+  },
+  {
+    "id": "tk-3",
+    "titre": "Rédiger le cahier de tests",
+    "description": "Lister les scénarios de test du module.",
+    "assigneA": "u-stag-1",
+    "creePar": "u-tuteur-1",
+    "statut": "a_faire",
+    "priorite": "basse",
+    "dateEcheance": "2026-08-20"
+  },
+  {
+    "id": "tk-4",
+    "titre": "Préparer le calendrier éditorial du mois",
+    "description": "Lister les publications prévues avec visuels associés.",
+    "assigneA": "u-stag-2",
+    "creePar": "u-tuteur-2",
+    "statut": "en_cours",
+    "priorite": "haute",
+    "dateEcheance": "2026-08-12"
+  },
+  {
+    "id": "tk-5",
+    "titre": "Analyser les performances du dernier trimestre",
+    "description": "Extraire les statistiques des 3 derniers mois.",
+    "assigneA": "u-stag-2",
+    "creePar": "u-tuteur-2",
+    "statut": "a_faire",
+    "priorite": "moyenne",
+    "dateEcheance": "2026-08-22"
+  }
+]

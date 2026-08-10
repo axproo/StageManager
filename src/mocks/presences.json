@@ -1,0 +1,102 @@
+[
+  {
+    "id": "pr-1",
+    "stagiaireId": "stg-1",
+    "date": "2026-08-03",
+    "statut": "present",
+    "mode": "presentiel",
+    "heureArrivee": "09:00",
+    "heureDepart": "17:30",
+    "saisiPar": "u-tuteur-1"
+  },
+  {
+    "id": "pr-2",
+    "stagiaireId": "stg-1",
+    "date": "2026-08-04",
+    "statut": "present",
+    "mode": "presentiel",
+    "heureArrivee": "09:05",
+    "heureDepart": "17:30",
+    "saisiPar": "u-tuteur-1"
+  },
+  {
+    "id": "pr-3",
+    "stagiaireId": "stg-1",
+    "date": "2026-08-05",
+    "statut": "retard",
+    "mode": "presentiel",
+    "heureArrivee": "10:15",
+    "heureDepart": "17:30",
+    "saisiPar": "u-tuteur-1"
+  },
+  {
+    "id": "pr-4",
+    "stagiaireId": "stg-1",
+    "date": "2026-08-06",
+    "statut": "absent",
+    "mode": "presentiel",
+    "heureArrivee": null,
+    "heureDepart": null,
+    "saisiPar": "u-tuteur-1"
+  },
+  {
+    "id": "pr-5",
+    "stagiaireId": "stg-1",
+    "date": "2026-08-07",
+    "statut": "present",
+    "mode": "presentiel",
+    "heureArrivee": "08:58",
+    "heureDepart": "17:30",
+    "saisiPar": "u-tuteur-1"
+  },
+  {
+    "id": "pr-6",
+    "stagiaireId": "stg-2",
+    "date": "2026-08-03",
+    "statut": "present",
+    "mode": "presentiel",
+    "heureArrivee": "09:00",
+    "heureDepart": "17:00",
+    "saisiPar": "u-tuteur-2"
+  },
+  {
+    "id": "pr-7",
+    "stagiaireId": "stg-2",
+    "date": "2026-08-04",
+    "statut": "conge",
+    "mode": "en_ligne",
+    "heureArrivee": null,
+    "heureDepart": null,
+    "saisiPar": "u-tuteur-2"
+  },
+  {
+    "id": "pr-8",
+    "stagiaireId": "stg-2",
+    "date": "2026-08-05",
+    "statut": "present",
+    "mode": "en_ligne",
+    "heureArrivee": "08:55",
+    "heureDepart": "17:00",
+    "saisiPar": "u-tuteur-2"
+  },
+  {
+    "id": "pr-9",
+    "stagiaireId": "stg-2",
+    "date": "2026-08-06",
+    "statut": "present",
+    "mode": "presentiel",
+    "heureArrivee": "09:02",
+    "heureDepart": "17:00",
+    "saisiPar": "u-tuteur-2"
+  },
+  {
+    "id": "pr-10",
+    "stagiaireId": "stg-2",
+    "date": "2026-08-07",
+    "statut": "retard",
+    "mode": "en_ligne",
+    "heureArrivee": "10:30",
+    "heureDepart": "17:00",
+    "saisiPar": "u-tuteur-2"
+  }
+]

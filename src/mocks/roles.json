@@ -1,0 +1,53 @@
+[
+  {
+    "id": "role-admin",
+    "nom": "Administrateur",
+    "description": "Administration technique et fonctionnelle globale de la plateforme.",
+    "systeme": true,
+    "permissions": [
+      "users:read", "users:create", "users:update", "users:delete",
+      "roles:read", "roles:create", "roles:update", "roles:delete",
+      "departments:read", "departments:create", "departments:update", "departments:delete",
+      "stagiaires:read", "stagiaires:create", "stagiaires:update", "stagiaires:delete",
+      "presences:read",
+      "taches:read",
+      "activityLog:read",
+      "settings:global"
+    ]
+  },
+  {
+    "id": "role-responsable",
+    "nom": "Responsable Stage",
+    "description": "Gestion et supervision globale des stages et des stagiaires.",
+    "systeme": true,
+    "permissions": [
+      "users:read",
+      "departments:read",
+      "stagiaires:read", "stagiaires:create", "stagiaires:update", "stagiaires:delete",
+      "presences:read", "presences:create", "presences:update",
+      "taches:read"
+    ]
+  },
+  {
+    "id": "role-tuteur",
+    "nom": "Tuteur / Encadrant",
+    "description": "Suivi des stagiaires qui lui sont affectés.",
+    "systeme": true,
+    "permissions": [
+      "stagiaires:read", "stagiaires:update",
+      "presences:read", "presences:create", "presences:update",
+      "taches:read", "taches:create", "taches:update", "taches:delete"
+    ]
+  },
+  {
+    "id": "role-stagiaire",
+    "nom": "Stagiaire",
+    "description": "Consultation et suivi de son propre stage, de ses tâches et de ses présences.",
+    "systeme": true,
+    "permissions": [
+      "stagiaires:read",
+      "presences:read",
+      "taches:read", "taches:update"
+    ]
+  }
+]

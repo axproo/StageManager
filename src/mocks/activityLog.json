@@ -1,0 +1,7 @@
+[
+  { "id": "al-1", "userId": "u-resp-1", "action": "CREATE", "cibleType": "stagiaire", "cibleId": "stg-3", "date": "2025-08-06T09:00:00Z" },
+  { "id": "al-2", "userId": "u-tuteur-1", "action": "CREATE", "cibleType": "tache", "cibleId": "tk-2", "date": "2025-08-01T14:00:00Z" },
+  { "id": "al-3", "userId": "u-tuteur-1", "action": "UPDATE", "cibleType": "presence", "cibleId": "pr-4", "date": "2025-08-07T18:00:00Z" },
+  { "id": "al-4", "userId": "u-admin-1", "action": "UPDATE", "cibleType": "user", "cibleId": "u-stag-3", "date": "2025-08-08T10:00:00Z" },
+  { "id": "al-5", "userId": "u-admin-1", "action": "LOGIN", "cibleType": "session", "cibleId": null, "date": "2025-08-09T08:00:00Z" }
+]

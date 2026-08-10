@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-brand-50: #eef4fc;
+  --color-brand-100: #d7e6f8;
+  --color-brand-300: #8fb8e8;
+  --color-brand-500: #2b63b3;
+  --color-brand-600: #1f4e9c;
+  --color-brand-700: #163a78;
+
+  --color-accent-green: #6fb936;
+  --color-accent-green-dark: #558f29;
+
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f8fc;
+  --color-border: #e2e8f0;
+
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #1f4e9c;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface-muted);
+  color: #0f172a;
+}
+
+html.dark body {
+  background: #0b1220;
+  color: #e2e8f0;
+}
+
+.surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+html.dark .surface {
+  background: #131c2e;
+  border-color: #1f2b40;
+}
+
+.field-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: #0f172a;
+}
+
+.field-input::placeholder {
+  color: #94a3b8;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+html.dark .field-input {
+  background: #0f1729;
+  border-color: #223049;
+  color: #e2e8f0;
+}
+
+/* Panneau de branding premium — utilisé uniquement sur le Login (directive design #16) */
+.brand-panel {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(111, 185, 54, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.08), transparent 40%),
+    linear-gradient(160deg, var(--color-brand-700) 0%, var(--color-brand-600) 55%, var(--color-brand-500) 100%);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

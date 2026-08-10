@@ -1,0 +1,98 @@
+[
+  {
+    "id": "u-admin-1",
+    "prenom": "Sana",
+    "nom": "Ben Salah",
+    "email": "sana.bensalah@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-admin",
+    "departmentId": null,
+    "statut": "actif",
+    "avatarInitials": "SB",
+    "createdAt": "2024-01-10T09:00:00Z"
+  },
+  {
+    "id": "u-resp-1",
+    "prenom": "Mehdi",
+    "nom": "Gharbi",
+    "email": "mehdi.gharbi@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-responsable",
+    "departmentId": "dep-info",
+    "statut": "actif",
+    "avatarInitials": "MG",
+    "createdAt": "2024-01-12T09:00:00Z"
+  },
+  {
+    "id": "u-tuteur-1",
+    "prenom": "Ahmed",
+    "nom": "Ben Ali",
+    "email": "ahmed.benali@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-tuteur",
+    "departmentId": "dep-info",
+    "statut": "actif",
+    "avatarInitials": "AB",
+    "createdAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "u-tuteur-2",
+    "prenom": "Sonia",
+    "nom": "Trabelsi",
+    "email": "sonia.trabelsi@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-tuteur",
+    "departmentId": "dep-mkt",
+    "statut": "actif",
+    "avatarInitials": "ST",
+    "createdAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "u-stag-1",
+    "prenom": "Jean",
+    "nom": "Dupont",
+    "email": "jean.dupont@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-stagiaire",
+    "departmentId": "dep-info",
+    "statut": "actif",
+    "avatarInitials": "JD",
+    "createdAt": "2024-09-01T09:00:00Z"
+  },
+  {
+    "id": "u-stag-2",
+    "prenom": "Hela",
+    "nom": "Belghith",
+    "email": "hela.belghith@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-stagiaire",
+    "departmentId": "dep-mkt",
+    "statut": "actif",
+    "avatarInitials": "HB",
+    "createdAt": "2024-09-05T09:00:00Z"
+  },
+  {
+    "id": "u-stag-3",
+    "prenom": "Karim",
+    "nom": "Jlassi",
+    "email": "karim.jlassi@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-stagiaire",
+    "departmentId": "dep-fin",
+    "statut": "inactif",
+    "avatarInitials": "KJ",
+    "createdAt": "2024-09-10T09:00:00Z"
+  },
+  {
+    "id": "u-stag-4",
+    "prenom": "Amira",
+    "nom": "Mansouri",
+    "email": "amira.mansouri@stagemanager.tn",
+    "motDePasse": "password",
+    "roleId": "role-stagiaire",
+    "departmentId": "dep-info",
+    "statut": "actif",
+    "avatarInitials": "AM",
+    "createdAt": "2025-01-15T09:00:00Z"
+  }
+]

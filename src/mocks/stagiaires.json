@@ -1,0 +1,46 @@
+[
+  {
+    "id": "stg-1",
+    "userId": "u-stag-1",
+    "departmentId": "dep-info",
+    "tuteurId": "u-tuteur-1",
+    "dateDebut": "2026-03-02",
+    "dateFin": "2026-08-15",
+    "sujetStage": "Développement d'un module de gestion documentaire interne",
+    "statut": "en_cours",
+    "modalite": "presentiel"
+  },
+  {
+    "id": "stg-2",
+    "userId": "u-stag-2",
+    "departmentId": "dep-mkt",
+    "tuteurId": "u-tuteur-2",
+    "dateDebut": "2026-04-06",
+    "dateFin": "2026-10-31",
+    "sujetStage": "Refonte de la stratégie de contenu réseaux sociaux",
+    "statut": "en_cours",
+    "modalite": "hybride"
+  },
+  {
+    "id": "stg-3",
+    "userId": "u-stag-3",
+    "departmentId": "dep-fin",
+    "tuteurId": null,
+    "dateDebut": "2026-09-01",
+    "dateFin": "2027-02-28",
+    "sujetStage": "Automatisation du rapprochement bancaire",
+    "statut": "a_venir",
+    "modalite": "distanciel"
+  },
+  {
+    "id": "stg-4",
+    "userId": "u-stag-4",
+    "departmentId": "dep-info",
+    "tuteurId": "u-tuteur-1",
+    "dateDebut": "2025-09-01",
+    "dateFin": "2026-02-28",
+    "sujetStage": "Mise en place d'un tableau de bord analytique pour le suivi des stages",
+    "statut": "termine",
+    "modalite": "hybride"
+  }
+]

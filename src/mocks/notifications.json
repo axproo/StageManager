@@ -1,0 +1,7 @@
+[
+  { "id": "nt-1", "userId": "u-stag-1", "message": "Une nouvelle tâche vous a été assignée : \"Maquetter l'interface de recherche documentaire\".", "type": "tache", "lu": false, "createdAt": "2025-08-07T10:00:00Z" },
+  { "id": "nt-2", "userId": "u-stag-1", "message": "Votre présence du 07/08 a été enregistrée comme absente.", "type": "presence", "lu": false, "createdAt": "2025-08-07T18:00:00Z" },
+  { "id": "nt-3", "userId": "u-tuteur-1", "message": "Jean Dupont a terminé la tâche \"Analyser l'existant du module documentaire\".", "type": "tache", "lu": true, "createdAt": "2025-08-01T16:00:00Z" },
+  { "id": "nt-4", "userId": "u-resp-1", "message": "Un nouveau stagiaire (Karim Jlassi) a été ajouté au département Finance.", "type": "stagiaire", "lu": false, "createdAt": "2025-08-06T09:00:00Z" },
+  { "id": "nt-5", "userId": "u-stag-2", "message": "Une nouvelle tâche vous a été assignée : \"Préparer le calendrier éditorial de septembre\".", "type": "tache", "lu": true, "createdAt": "2025-08-05T11:00:00Z" }
+]
