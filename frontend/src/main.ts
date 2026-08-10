@@ -1,22 +1,15 @@
-import { createApp } from 'vue'
-import './style/global.css'
-import App from './App.vue'
-import { createPinia } from 'pinia'
-import createDynamicRouter from './router/index.ts'
+import { createApp } from "vue";
+import "./style/global.css";
+import App from "./App.vue";
 
-async function initializeApp() {
-    const app = createApp(App)
+import { createPinia } from "pinia";
 
-    app.config.errorHandler = (err, vm, info) => {
-        console.error('Erreur capturée globalement:', err)
-        console.log('Composant:', vm)
-        console.log('Information: ', info)
-    }
+import router from "./router";
 
-    app.use(createPinia())
+const app = createApp(App);
 
-    const router = await createDynamicRouter()
-    app.use(router)
-    app.mount('#app')
-}
-initializeApp()
+app.use(createPinia());
+
+app.use(router);
+
+app.mount("#app");
