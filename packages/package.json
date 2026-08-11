@@ -2,6 +2,7 @@
     "name": "@axproo/managerLib",
     "private": true,
     "workspaces": [
-        "plugins/*"
+        "plugins/*",
+        "auth"
     ]
 }

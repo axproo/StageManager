@@ -1,18 +1,9 @@
 import { defineStore } from "pinia";
-
-export type UserRole = "ADMIN" | "STAGIAIRE";
-
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: UserRole;
-}
-
-interface LoginPayload {
-  email: string;
-  password: string;
-}
+import type {
+  User,
+  UserRole,
+  LoginPayload
+} from "@stagemanager/auth";
 
 interface AuthState {
   user: User | null;

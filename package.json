@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "vue-router": "^5.2.0"
-  }
+  "name": "stagemanager",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "packages/*"
+  ]
 }
