@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useInternshipStore } from "../../stores/InternshipStore";
+import RequestsTabBar from "@/components/ui/RequestsTabBar.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -157,13 +158,15 @@ const icons: Record<string, string> = {
 
     <!-- MODE LISTE -->
     <template v-else>
-      <div class="mb-8">
+      <div class="mb-6">
         <span class="inline-block text-blue-600 text-xs font-semibold tracking-wider uppercase mb-2 px-3 py-1 bg-blue-50 rounded-full">
-          {{ requests.length }} en attente
+          Gestion des candidatures
         </span>
         <h1 class="text-3xl font-bold text-gray-900">Demandes de stage</h1>
-        <p class="text-gray-500 mt-1">Gestion des demandes de stage en attente</p>
+        <p class="text-gray-500 mt-1">Gérez les candidatures reçues par département</p>
       </div>
+
+      <RequestsTabBar />
 
       <div v-if="requests.length === 0" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
         <div class="w-14 h-14 rounded-full bg-gray-50 flex items-center justify-center mx-auto mb-4">

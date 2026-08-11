@@ -2,6 +2,8 @@
 import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useInternshipStore } from "../../stores/InternshipStore";
+import { icons } from "@/constants/icons";
+import StatCard from "@/components/ui/StatCard.vue";
 
 const router = useRouter();
 const internshipStore = useInternshipStore();
@@ -45,23 +47,6 @@ function openNotification(requestId: number) {
   showNotifications.value = false;
   router.push({ path: "/admin/requests", query: { requestId: requestId.toString() } });
 }
-
-const stats = computed(() => [
-  { key: "pending", label: "En attente", value: pendingCount.value, icon: "clock", bg: "bg-amber-50", ring: "ring-amber-100", text: "text-amber-600" },
-  { key: "accepted", label: "Acceptées", value: acceptedCount.value, icon: "check", bg: "bg-green-50", ring: "ring-green-100", text: "text-green-600" },
-  { key: "rejected", label: "Refusées", value: rejectedCount.value, icon: "x", bg: "bg-red-50", ring: "ring-red-100", text: "text-red-600" },
-  { key: "total", label: "Total des demandes", value: totalCount.value, icon: "inbox", bg: "bg-blue-50", ring: "ring-blue-100", text: "text-blue-600" },
-]);
-
-const icons: Record<string, string> = {
-  clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-  check: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/>',
-  x: '<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>',
-  inbox: '<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/>',
-  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
-  "bell-off": '<path d="M8.7 3A6 6 0 0 1 18 8c0 2.4.5 4.4 1.1 5.8"/><path d="M17 17H3s3-2 3-9c0-.5.1-.9.2-1.4"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><line x1="1" y1="1" x2="23" y2="23"/>',
-  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
-};
 </script>
 
 <template>
@@ -166,19 +151,10 @@ const icons: Record<string, string> = {
 
     <!-- STATISTIQUES -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-      <div
-        v-for="stat in stats"
-        :key="stat.key"
-        class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <div :class="['w-11 h-11 rounded-xl flex items-center justify-center ring-1', stat.bg, stat.ring]">
-            <svg :class="['w-5 h-5', stat.text]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="icons[stat.icon]"></svg>
-          </div>
-        </div>
-        <p :class="['text-3xl font-extrabold tabular-nums', stat.text]">{{ stat.value }}</p>
-        <p class="text-sm text-gray-500 mt-1">{{ stat.label }}</p>
-      </div>
+      <StatCard label="En attente" :value="pendingCount" icon="clock" color="amber" />
+      <StatCard label="Acceptées" :value="acceptedCount" icon="check" color="green" />
+      <StatCard label="Refusées" :value="rejectedCount" icon="x" color="red" />
+      <StatCard label="Total des demandes" :value="totalCount" icon="inbox" color="blue" />
     </div>
 
     <!-- RÉSUMÉ -->
