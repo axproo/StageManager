@@ -1,8 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
-import { ref, watch } from "vue";
-import { userMocks } from "../mocks/userMock";
 import { toast } from "vue3-toastify";
 import SwitchLang from "@components/base/SwitchLang.vue";
 import UserForm from "@/components/forms/UserForm.vue";
@@ -15,7 +13,6 @@ function handleSubmit(user) {
 
   // Ajouter un utilisateur
   users.push(user);
-  console.log(users);
   // Sauvegarder
   localStorage.setItem("users", JSON.stringify(users));
 
@@ -27,11 +24,11 @@ function handleSubmit(user) {
 </script>
 
 <template>
-  <div class="relative min-h-screen flex bg-gray-900">
+  <div class="relative min-h-screen flex bg-[#200a83]">
     <div
       class="relative w-full flex flex-col justify-center px-6 py-12 lg:px-12"
     >
-      <SwitchLang />
+      <SwitchLang :scrolled="true" />
 
       <!-- SignUp CONTENT -->
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">

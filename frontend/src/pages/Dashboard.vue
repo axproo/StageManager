@@ -6,7 +6,7 @@
     >
       <div
         class="absolute inset-0 bg-gradient-to-r from-[#200a83] via-[#15108a] to-[#091586] opacity-90 blur-3xl"
-      ></div>
+      />
 
       <!-- Content -->
       <div class="relative z-10 text-center text-white px-6">
@@ -27,13 +27,13 @@
           </transition>
         </div>
         <button
-          @click="scrollToOverview"
           class="mt-10 bg-white text-blue-900 px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition"
+          @click="scrollToOverview"
         >
           {{ $t("exploreDashboard") }}
         </button>
 
-        <div @click="scrollToOverview" class="mt-16 animate-bounce text-4xl">
+        <div class="mt-16 animate-bounce text-4xl" @click="scrollToOverview">
           ↓
         </div>
       </div>
@@ -84,6 +84,7 @@
             v-for="feature in features"
             :key="feature.key"
             class="bg-gray-50 rounded-xl p-8 shadow hover:shadow-lg transition"
+            @click="navigateTo(feature.path)"
           >
             <div class="text-4xl mb-4">
               {{ feature.icon }}
@@ -105,13 +106,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { useAppStore } from "@stores/user.store";
-import AppLayout from "@components/layout/AppLayout.vue";
-import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
 
-const store = useAppStore();
-const t = useI18n();
-const quotes = [{}, {}, {}, {}];
+const router = useRouter();
 
 const overview = ref(null);
 const currentQuote = ref(0);
@@ -127,7 +124,14 @@ onMounted(() => {
     }
   }, 5000); // change toutes les 5 secondes
 });
+const navigateTo = (path) => {
+  router.push(path);
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 onUnmounted(() => {
   clearInterval(interval);
 });
@@ -164,18 +168,22 @@ const features = [
   {
     icon: "👨‍🎓",
     key: "manageInterns",
+    path: "/interns",
   },
   {
     icon: "🏢",
     key: "departments",
+    path: "/departments",
   },
   {
     icon: "📊",
     key: "trackProgress",
+    path: "/progress",
   },
   {
     icon: "📑",
     key: "generateReports",
+    path: "/reports",
   },
 ];
 </script>

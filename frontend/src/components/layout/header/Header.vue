@@ -1,9 +1,15 @@
 <script setup>
-import { useI18n } from "vue-i18n";
 import SwitchLang from "../../base/SwitchLang.vue";
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRoute } from "vue-router";
 
-const { t } = useI18n();
+const route = useRoute();
+
+const alwaysBluePages = ["/interns", "/requests"];
+
+const isBluePage = () => {
+  return alwaysBluePages.includes(route.path);
+};
 const isScrolled = ref(false);
 
 const handleScroll = () => {
@@ -22,7 +28,7 @@ onUnmounted(() => {
   <nav
     :class="[
       'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-      isScrolled ? 'bg-[#200a83]' : 'bg-white shadow-lg',
+      isScrolled || isBluePage() ? 'bg-[#200a83]' : 'bg-white shadow-lg',
     ]"
   >
     <div class="w-full px-6">
@@ -43,7 +49,7 @@ onUnmounted(() => {
             type="button"
             :class="[
               'rounded-full p-2  transition',
-              isScrolled ? 'text-gray-300' : 'text-black',
+              isScrolled || isBluePage() ? 'text-gray-300' : 'text-black',
             ]"
           >
             <span class="sr-only">Notifications</span>
@@ -88,7 +94,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Language Switch -->
-        <SwitchLang :scrolled="isScrolled" />
+        <SwitchLang :scrolled="isScrolled" :blue-page="isBluePage()" />
       </div>
     </div>
   </nav>

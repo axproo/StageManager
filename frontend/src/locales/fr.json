@@ -79,5 +79,10 @@
     {
       "text": "Le génie, ça n’existe pas. Le vrai succès s’enracine dans le travail. -Jacques Brel"
     }
-  ]
+  ],
+  "fillAllFields": "Veuillez remplir tous les champs",
+  "interAddedSuccessfully": "Stagiaire ajouté avec succès",
+  "updatedSuccessfullyMessage": "Modification enregistrée",
+  "deletedIntern": "Stagiaire supprimé",
+  "requestSentSuccessfully": "Demande envoyée avec succès"
 }

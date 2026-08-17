@@ -1,5 +1,7 @@
 const components = {
   DashboardView: () => import("@pages/Dashboard.vue"),
+  InternsView: () => import("@pages/interns/Interns.vue"),
+  InternsRequestView: () => import("@pages/interns/InternsRequest.vue"),
   LoginView: () => import("@pages/Login.vue"),
   SignUpView: () => import("@pages/SignUp.vue"),
   ErrorView: () => import("@pages/Error.vue"),
@@ -72,6 +74,26 @@ export const mockRoutes = [
         component: components.DashboardView,
         meta: {
           title: "Dashboard",
+          requiresAuth: true,
+          public: false,
+        },
+      },
+      {
+        path: "interns",
+        name: "interns",
+        component: components.InternsView,
+        meta: {
+          title: "Interns",
+          requiresAuth: true,
+          public: false,
+        },
+      },
+      {
+        path: "requests",
+        name: "requests",
+        component: components.InternsRequestView,
+        meta: {
+          title: "requests",
           requiresAuth: true,
           public: false,
         },

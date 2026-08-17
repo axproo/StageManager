@@ -45,7 +45,6 @@ const errors = reactive({
   lastName: "",
   password: "",
 });
-console.log(props.user);
 const buttonText = computed(() =>
   props.isEdit ? t("updateAccount") : t("createAccount"),
 );
@@ -99,7 +98,6 @@ function validate() {
 
 function submitForm() {
   if (!validate()) return;
-  console.log(form);
   emit("submit", { ...form });
 }
 </script>
@@ -163,8 +161,8 @@ function submitForm() {
 
           <button
             type="button"
-            @click="togglePassword"
             class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white"
+            @click="togglePassword"
           >
             <svg
               v-if="!showPassword"
@@ -207,8 +205,8 @@ function submitForm() {
           />
           <button
             type="button"
-            @click="toggleConfirmPassword"
             class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white"
+            @click="toggleConfirmPassword"
           >
             <svg
               v-if="!showConfirmPassword"

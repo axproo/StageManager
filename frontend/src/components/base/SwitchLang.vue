@@ -4,6 +4,7 @@ import { ref } from "vue";
 
 defineProps({
   scrolled: Boolean,
+  bluePage: Boolean,
 });
 const { locale } = useI18n();
 const isLanguageOpen = ref(false);
@@ -19,7 +20,7 @@ const switchLanguage = (lang) => {
       <button
         :class="[
           'flex items-center justify-center p-2 rounded-full transition-colors',
-          scrolled
+          scrolled || bluePage
             ? 'text-white hover:text-gray-300'
             : 'text-gray-800 hover:text-gray-600',
         ]"

@@ -78,10 +78,9 @@ function handleLogin() {
     });
     return;
   }
-  console.log(user);
   localStorage.setItem("currentUser", JSON.stringify(user));
 
-  store.login(user.name);
+  store.login(user.name, user.role);
   router.push("/dashboard");
   toast.success(t("loginSuccess"), {
     autoClose: 10000,
@@ -95,7 +94,7 @@ const handleGoogleLogin = (response) => {
     return;
   }
 
-  store.login(user.name);
+  store.login(user.name, user.role);
 
   toast.success(t("loginSuccess"), {
     autoClose: 10000,
@@ -106,12 +105,12 @@ const handleGoogleLogin = (response) => {
 </script>
 
 <template>
-  <div class="relative min-h-screen flex bg-gray-900">
+  <div class="relative min-h-screen flex bg-[#200a83]">
     <!-- LEFT LOGIN SIDE -->
     <div
       class="relative w-full lg:w-2/5 flex flex-col justify-center px-6 py-12 lg:px-12"
     >
-      <SwitchLang />
+      <SwitchLang :scrolled="true" />
 
       <!-- LOGIN CONTENT -->
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -159,8 +158,8 @@ const handleGoogleLogin = (response) => {
 
               <button
                 type="button"
-                @click="togglePassword"
                 class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white"
+                @click="togglePassword"
               >
                 <svg
                   v-if="!showPassword"

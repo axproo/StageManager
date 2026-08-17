@@ -26,6 +26,7 @@ export default [
 
     rules: {
       "vue/html-indent": "off",
+      "vue/html-closing-bracket-newline": "off",
       "vue/html-self-closing": [
         "error",
         {

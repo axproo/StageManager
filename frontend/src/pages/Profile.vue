@@ -18,11 +18,11 @@ function updateUser(data) {
 </script>
 
 <template>
-  <div class="relative min-h-screen flex bg-gray-900">
+  <div class="relative min-h-screen flex bg-[#200a83]">
     <div
       class="relative w-full flex flex-col justify-center px-6 py-12 lg:px-12"
     >
-      <SwitchLang />
+      <SwitchLang :scrolled="true" />
 
       <!-- SignUp CONTENT -->
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -38,7 +38,7 @@ function updateUser(data) {
           {{ $t("updateAccount") }}
         </h2>
       </div>
-      <UserForm :user="currentUser" :isEdit="true" @submit="updateUser" />
+      <UserForm :user="currentUser" :is-edit="true" @submit="updateUser" />
     </div>
   </div>
 </template>

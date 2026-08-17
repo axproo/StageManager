@@ -2,7 +2,6 @@
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { ref, watch } from "vue";
-import { userMocks } from "../mocks/userMock";
 import { toast } from "vue3-toastify";
 import ButtonUi from "@components/ui/buttons/ButtonUi.vue";
 import SwitchLang from "@components/base/SwitchLang.vue";
@@ -38,7 +37,6 @@ function validateForm() {
   const email = localStorage.getItem("email");
 
   const user = users.find((u) => u.email === email);
-  console.log(user);
 
   if (password.value === user.password) {
     errors.value.password = t("passwordMatchesOldPassword");
@@ -91,11 +89,11 @@ const toggleConfirmPassword = () => {
 </script>
 
 <template>
-  <div class="relative min-h-screen flex bg-gray-900">
+  <div class="relative min-h-screen flex bg-[#200a83]">
     <div
       class="relative w-full flex flex-col justify-center px-6 py-12 lg:px-12"
     >
-      <SwitchLang />
+      <SwitchLang :scrolled="true" />
 
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
@@ -127,8 +125,8 @@ const toggleConfirmPassword = () => {
 
               <button
                 type="button"
-                @click="togglePassword"
                 class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white"
+                @click="togglePassword"
               >
                 <svg
                   v-if="!showPassword"
@@ -171,8 +169,8 @@ const toggleConfirmPassword = () => {
               />
               <button
                 type="button"
-                @click="toggleConfirmPassword"
                 class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white"
+                @click="toggleConfirmPassword"
               >
                 <svg
                   v-if="!showConfirmPassword"

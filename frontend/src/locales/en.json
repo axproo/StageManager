@@ -65,5 +65,24 @@
       "title": "Generate Reports",
       "description": "Create reports and gain insights into internship activities."
     }
-  }
+  },
+  "quotes": [
+    {
+      "text": "Set goals that match your potential, not your limitations. -Grant Cardone"
+    },
+    {
+      "text": "There are two types of pain: the pain of regret or the pain of discipline. The choice is yours. -Jim Rohn"
+    },
+    {
+      "text": "Be the change you want to see in the world. -Mahatma Gandhi"
+    },
+    {
+      "text": "Genius does not exist. True success is rooted in hard work. -Jacques Brel"
+    }
+  ],
+  "fillAllFields": "Please fill in all fields",
+  "interAddedSuccessfully": "Intern added successfully",
+  "updatedSuccessfullyMessage": "Changes saved successfully",
+  "deletedIntern": "Intern deleted successfully",
+  "requestSentSuccessfully": "Request sent successfully"
 }
