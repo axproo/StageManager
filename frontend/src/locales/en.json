@@ -84,5 +84,55 @@
   "interAddedSuccessfully": "Intern added successfully",
   "updatedSuccessfullyMessage": "Changes saved successfully",
   "deletedIntern": "Intern deleted successfully",
-  "requestSentSuccessfully": "Request sent successfully"
+  "requestSentSuccessfully": "Request sent successfully",
+  "departments": {
+    "title": "Department Management",
+    "description": "Manage the departments available for internship applications.",
+    "add": "+ Add a department",
+    "search": "Search for a department...",
+    "available": "Department available for internships",
+
+    "modal": {
+      "addTitle": "Add a department",
+      "editTitle": "Edit department",
+      "nameLabel": "Department name",
+      "namePlaceholder": "Ex: Web Development",
+      "cancel": "Cancel",
+      "save": "Save",
+      "close": "Close"
+    },
+
+    "delete": {
+      "title": "Are you sure you want to delete this department?",
+      "description": "This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Delete"
+    },
+
+    "empty": {
+      "title": "No department found",
+      "description": "Add a new department to get started."
+    },
+
+    "messages": {
+      "required": "The department name is required.",
+      "alreadyExists": "This department already exists.",
+      "success": "Operation completed successfully."
+    }
+  },
+  "actions": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "departmentsList": {
+    "webDevelopment": "Web Development",
+    "mobileDevelopment": "Mobile Development",
+    "cybersecurity": "Cybersecurity",
+    "dataScience": "Data Science",
+    "artificialIntelligence": "Artificial Intelligence",
+    "networks": "Networks",
+    "uiuxDesign": "UI/UX Design",
+    "marketing": "Marketing",
+    "humanResources": "Human Resources"
+  }
 }

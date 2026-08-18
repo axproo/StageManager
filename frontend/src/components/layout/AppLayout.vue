@@ -18,7 +18,7 @@ import SideBar from "./sidebar/SideBar.vue";
 import Footer from "./footer/Footer.vue";
 import { useRoute } from "vue-router";
 
-const dashboardPage = ["/dashboard"];
+const dashboardPage = ["/dashboard", "/departments"];
 const route = useRoute();
 
 const isDashBoardPage = () => {

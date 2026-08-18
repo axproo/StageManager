@@ -8,6 +8,7 @@ const components = {
   ForgotPasswordView: () => import("@pages/ForgotPassword.vue"),
   ResetPasswordView: () => import("@pages/ResetPassword.vue"),
   ProfileView: () => import("@pages/Profile.vue"),
+  DepartementsView: () => import("@pages/departements/Departements.vue"),
   AppLayout: () => import("@components/layout/AppLayout.vue"),
 };
 export const mockRoutes = [
@@ -84,6 +85,16 @@ export const mockRoutes = [
         component: components.InternsView,
         meta: {
           title: "Interns",
+          requiresAuth: true,
+          public: false,
+        },
+      },
+      {
+        path: "departments",
+        name: "departments",
+        component: components.DepartementsView,
+        meta: {
+          title: "departments",
           requiresAuth: true,
           public: false,
         },

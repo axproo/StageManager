@@ -84,5 +84,55 @@
   "interAddedSuccessfully": "Stagiaire ajouté avec succès",
   "updatedSuccessfullyMessage": "Modification enregistrée",
   "deletedIntern": "Stagiaire supprimé",
-  "requestSentSuccessfully": "Demande envoyée avec succès"
+  "requestSentSuccessfully": "Demande envoyée avec succès",
+  "departments": {
+    "title": "Gestion des départements",
+    "description": "Gérez les départements disponibles pour les demandes de stage.",
+    "add": " + Ajouter un département",
+    "search": "Rechercher un département...",
+    "available": "Département disponible pour les stages",
+
+    "modal": {
+      "addTitle": "Ajouter un département",
+      "editTitle": "Modifier le département",
+      "nameLabel": "Nom du département",
+      "namePlaceholder": "Ex: Développement Web",
+      "cancel": "Annuler",
+      "save": "Sauvegarder",
+      "close": "Fermer"
+    },
+
+    "delete": {
+      "title": "Voulez-vous vraiment supprimer ce département ?",
+      "description": "Cette action est irréversible.",
+      "cancel": "Annuler",
+      "confirm": "Supprimer"
+    },
+
+    "empty": {
+      "title": "Aucun département trouvé",
+      "description": "Ajoutez un nouveau département pour commencer."
+    },
+
+    "messages": {
+      "required": "Le nom du département est obligatoire.",
+      "alreadyExists": "Ce département existe déjà.",
+      "success": "Opération effectuée avec succès."
+    }
+  },
+  "actions": {
+    "edit": "Modifier",
+    "delete": "Supprimer"
+  },
+  "departmentsList": {
+    "webDevelopment": "Développement Web",
+    "mobileDevelopment": "Développement Mobile",
+    "cybersecurity": "Cybersécurité",
+    "dataScience": "Data Science",
+    "artificialIntelligence": "Intelligence Artificielle",
+    "networks": "Réseaux",
+    "uiuxDesign": "Design UI/UX",
+    "marketing": "Marketing",
+    "humanResources": "Ressources Humaines"
+  }
 }
